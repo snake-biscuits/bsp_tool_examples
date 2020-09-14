@@ -1,4 +1,5 @@
-import vector
+from . import vector
+
 
 class plane:
     def __init__(normal, distance):

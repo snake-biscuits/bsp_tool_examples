@@ -16,10 +16,13 @@
 # Per Camera FoV?
 
 import math
+
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from sdl2 import *
-from utils.vector import vec2, vec3
+
+from .vector import vec2, vec3
+
 
 sensitivity = 0.25
 

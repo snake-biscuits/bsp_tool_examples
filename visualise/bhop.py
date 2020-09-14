@@ -11,32 +11,37 @@
 # Quake 3 Gravity is 800 inches/second
 # approx. 20.32 m/s
 
+# bhop physics variants:
+# Quake
+# Source (w/ ABH?)
+# Titanfall (w/ Wallrun, Stim, Grapple & G-Star?)
+# Apex (w/ Wallhops)
+
 # ENSURE JUMP IS DETERMINISTIC
 # RECORD PEAK HEIGHTS AND TEST AT DIFFERENT TICKRATES
 
 # FLOOR COLLISION IS ROUGH
 # VELOCITY ESPECIALLY
 import ctypes
-from OpenGL.GL import *
-from OpenGL.GLU import *
 import math
-from sdl2 import *
 from time import time
 
-import utils.camera
-from utils.physics import aabb
+from OpenGL.GL import *
+from OpenGL.GLU import *
+from sdl2 import *
 
-import sys
-sys.path.insert(0, '../')
-import vector
+from utilities import camera
+from utilities import physics
+from utilities import vector
 
-utils.camera.sensitivity = 2
+
+camera.sensitivity = 2
 
 class plane_struct:
     def __init__(self, normal, distance, BBmin, BBmax):
         self.normal = vector.vec3(normal).normalise()
         self.distance = distance
-        self.aabb = aabb(BBmin, BBmax)
+        self.aabb = physics.aabb(BBmin, BBmax)
 
     def __repr__(self):
         P = str((self.normal, self.distance))
@@ -45,9 +50,10 @@ class plane_struct:
 
 class client:
     def __init__(self, name):
-        self.aabb = aabb((-.5, -.5, 0), (.5, .5, 2))
-        self.swept_aabb = aabb((0, 0, 0), (0, 0, 0)) #can be local to update?
-        self.camera = utils.camera.firstperson()
+        self.aabb = physics.aabb((-.5, -.5, 0), (.5, .5, 2))
+        self.swept_aabb = physics.aabb((0, 0, 0), (0, 0, 0))
+        # ^ could be local to update?
+        self.camera = camera.firstperson()
         self.position = vector.vec3(0, 0, 0)
         self.old_position = vector.vec3(0, 0, 0)
         self.rotation = vector.vec3(0, 0, 0)
@@ -56,8 +62,6 @@ class client:
         self.name = name
         self.onGround = False
         self.velocity = vector.vec3()
-##        self.last
-        #VARIABLE GRAVITY
 
     def update(self, mouse, keys, dt):#GRAVITY VELOCITY / ACCELERATION
         self.camera.update(mouse)
@@ -67,26 +71,28 @@ class client:
         wish_vector.y = ((SDLK_w in keys) - (SDLK_s in keys))
         true_wish = wish_vector.rotate(0, 0, -self.rotation.z)
         self.front = vector.vec3(0, 1, 0).rotate(0, 0, -self.rotation.z)
-        #GET CURRENT FRICTION (FROM SURFACE CONTACT)
+        # GET CURRENT FRICTION (FROM SURFACE CONTACT)
         true_speed = self.speed * (1 if self.onGround else 1.75)
-        self.position += true_wish * true_speed * dt #NEED FRICTION
+        self.position += true_wish * true_speed * dt # NEED FRICTION
         if not self.onGround:
-            self.velocity += 0.5 * vector.vec3(0, 0, -9.81) * dt #GRAVITY
+            G = vector.vec3(0, 0, -9.81) # GRAVITY
+            self.velocity += 0.5 * G * dt
+            # ^ 9.81 meters per second per second
+            # - need actual acceleration, this is just an approximation
         self.onGround = False
         self.old_position = self.position
         self.position += self.velocity
-        #min maxing old & new positions
-        min_x = min(self.old_position.x, self.position.x)
-        max_x = max(self.old_position.x, self.position.x)
-        min_y = min(self.old_position.y, self.position.y)
-        max_y = max(self.old_position.y, self.position.y)
-        min_z = min(self.old_position.z, self.position.z)
-        max_z = max(self.old_position.z, self.position.z)
-        self.swept_aabb = aabb(vector.vec3(min_x, min_y, min_z) + self.aabb.min,
-                               vector.vec3(max_x, max_y, max_z) + self.aabb.max)
+        mins = (min(self.old_position.x, self.position.x),
+                min(self.old_position.y, self.position.y),
+                min(self.old_position.z, self.position.z))
+        maxs = (max(self.old_position.x, self.position.x),
+                max(self.old_position.y, self.position.y),
+                max(self.old_position.z, self.position.z))
+        self.swept_aabb = physics. aabb(vector.vec3(*mins) + self.aabb.min,
+                                        vector.vec3(*maxs) + self.aabb.max)
         global planes
-        for plane in planes: #filtered with position & bsp nodes
-            #also should combine results rather than applying in order
+        for plane in planes: # filtered with position & bsp nodes
+            # also should combine results rather than applying in order
             if self.swept_aabb.intersects(plane.aabb):
                 p = vector.dot(self.position, plane.normal)
                 max_p = self.swept_aabb.depth_along_axis(plane.normal)
@@ -97,12 +103,12 @@ class client:
                     if vector.dot(plane.normal, vector.vec3(z=1)) <= math.sqrt(2):
                         self.onGround = True
                     self.velocity = vector.vec3()
-                    #friction, surf & bounce
-    ##                    self.velocity -= self.velocity * plane.normal
+                    # friction, surf & bounce
+##                    self.velocity -= self.velocity * plane.normal
                     if SDLK_SPACE in keys: #JUMP
                         self.velocity.z += .6
     
-    def draw_aabb(self, aabb): #should be a function in physics
+    def draw_aabb(self, aabb): # why isn't this a physics.aabb method?
         glBegin(GL_QUADS)
         glVertex(aabb.min.x, aabb.max.y, aabb.max.z)
         glVertex(aabb.max.x, aabb.max.y, aabb.max.z)
@@ -168,23 +174,22 @@ class client:
         self.camera.set(self.position + (0, 0, 1.75))
 
     def spawn(self, position=vector.vec3()):
-        #take a TFclass and set AABB accordingly
         self.position = position
         self.velocity = vector.vec3()
 
     def report(self):
-        print('@', self.position.z, 'with velocity of:', self.velocity)
+        print("@", self.position.z, "with velocity of:", self.velocity)
 
 
 def main(width, height):
     SDL_Init(SDL_INIT_VIDEO)
-    window = SDL_CreateWindow(b'SDL2 OpenGL', SDL_WINDOWPOS_CENTERED,  SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS)
+    window = SDL_CreateWindow(b"SDL2 OpenGL", SDL_WINDOWPOS_CENTERED,  SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_BORDERLESS)
     glContext = SDL_GL_CreateContext(window)
     SDL_GL_SetSwapInterval(0)
     glClearColor(0.1, 0.1, 0.1, 0.0)
     gluPerspective(90, width / height, 0.1, 4096)
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
     glPointSize(8)
+    # transparency
     glEnable(GL_BLEND)
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
@@ -199,12 +204,11 @@ def main(width, height):
     # convert planes within aabbs to drawable geo
     # slice planes with other planes to create ngons
 
-    client0 = client('b!scuit') # TODO: draw client name at client position
-    spectator_camera = utils.camera.fixed((0, 0, 16), (90, 0, 0))
-
-    # CAMERA SWITCHING SYSTEM IS UGLY
+    client0 = client("b!scuit") # TODO: draw client name at client position
+    spectator_camera = camera.fixed((0, 0, 16), (90, 0, 0))
     cameras = [client0.set_view, spectator_camera.set]
-    active = 1
+    active = 0
+    # ^ camera is selected from a list, cycled by clicking RMB
 
     SDL_SetRelativeMouseMode(SDL_TRUE)
     SDL_SetWindowGrab(window, SDL_TRUE)
@@ -243,13 +247,13 @@ def main(width, height):
             dt -= 1 / tickrate
             oldtime = time()
 
-        # DISPLAY
+        # RENDER
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glLoadIdentity()
         gluPerspective(90, width / height, 0.1, 128)
-        cameras[active]() # ew
+        cameras[active]() # ew, camera system is nasty
 
-        # floor
+        # planes
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
         glColor(1, 0.5, 0, 0.25)
         glBegin(GL_QUADS)
@@ -258,37 +262,35 @@ def main(width, height):
         glVertex(8, -16)
         glVertex(-8, -16)
         glEnd()
-        
         glBegin(GL_TRIANGLE_FAN)
         glVertex(-32, 32, -16)
         glVertex(32, 32, -16)
         glVertex(32, -32, -16)
         glVertex(-32, -32, -16)
         glEnd()
-
         glBegin(GL_QUADS)
         glVertex(-8, 16, 4)
         glVertex(8, 16, -4)
         glVertex(8, -16, -4)
         glVertex(-8, -16, 4)
         glEnd()
-
+        # plane normals
         glColor(0, 0.5, 1)
         glBegin(GL_LINES)
         for plane in planes:
             glVertex(*(plane.normal * plane.distance))
             glVertex(*(plane.normal * (plane.distance + 1)))
         glEnd()
-
+        # player
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
-        # client
         client0.draw()
-
         SDL_GL_SwapWindow(window)
+        # frame rendered
+        
 
 if __name__ == '__main__':
     try:
         main(1280, 720)
     except Exception as exc:
-        SDL_Quit()
+        SDL_Quit() # close window if the script breaks
         raise exc
