@@ -1,3 +1,4 @@
+"""Converts .bsp files into .obj files"""
 import time
 from typing import Dict, Generator
 import sys
@@ -8,7 +9,7 @@ sys.path.insert(0, "../")
 import vector
 
 
-def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  #TODO: write .mtl for each vmt
+def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl for each vmt
     """yields an .obj file, one line at a time"""
     # OPTIMISE! plr_hightower takes 2 hours to process!
     start_time = time.time()
@@ -19,7 +20,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  #TODO: write .mtl for
     vt_count = 1
     vns = []  # should be a short list
     vn_count = 1
-    faces_by_material: Dict[str, ] = {}
+    faces_by_material: Dict[str, bsp.mod.face] = {}
     # ^ {material: [face, ...], ...}
     disps_by_material = {}
     # ^ {material: [face, ...], ...}
@@ -155,14 +156,21 @@ def respawn_bsp_to_obj(bsp):  # TODO: write .mtl for each vmt
 
 
 if __name__ == "__main__":
-    import argparse
-    # we want these command line arguments:
-    # -g --game [apex_legends/team_fortess2/titanfall2/vindictus]
-    # -o --outfile
-    sys.argv.append("./hightower_assets.bsp")
+    # import argparse
+    # parser = argparse.ArgumentParser(description="Converts .bsp files into .obj files")
+    # parser.add_argument("files", metavar="FILENAME", nargs="+",
+    #                     help=".bsp files to convert")
+    # supported_games = list(bsp_tool.mods.by_name)  # allow incomplete names
+    # # substitute spaces with dashes / underscores
+    # # perhaps a function that maps a string to the nearest game name?
+    # parser.add_argument("--game", default="Team Fortress 2",
+    #                     help=f"supported games: {supported_games}")
+    # # parser.add_argument("--outfile", default="")
+    # # name an output, how will it work for multiple files?
+    # parser.print_help()
     if len(sys.argv) > 1:  # drag & drop obj converter
+        # if game not in ("Titanfall 2", "Apex Legends"):
         write_obj = source_bsp_to_obj
-        # ^ selected with --game
         for map_path in sys.argv[1:]:
             bsp = bsp_tool.bsp(map_path)
             obj_file = open(map_path + ".obj", "w")
