@@ -5,8 +5,7 @@ import sys
 
 import bsp_tool
 
-sys.path.insert(0, "../")  # shouldn't be nessecary
-import vector  # noqa: E402
+import vector
 
 
 def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl for each vmt
