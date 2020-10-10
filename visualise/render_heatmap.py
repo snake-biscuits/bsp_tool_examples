@@ -3,16 +3,19 @@ import ctypes
 import itertools
 import json
 import math
+from time import time
+import sys
+
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from sdl2 import *
-from time import time
-import sys
-sys.path.insert(0, "../")
-import utils.camera
-from utils.vector import *
 
-utils.camera.sensitivity = 2
+from utilities import camera
+from utilities import vector
+
+
+camera.sensitivity = 2
+
 
 def main(width, height, json_file):
     SDL_Init(SDL_INIT_VIDEO)
