@@ -39,7 +39,10 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
                 disps_by_material[material] = []
             disps_by_material[material].append(face_index)
 
-    def uvs_of(vertex, tex_info, tex_data):
+    def uvs_of(vertex, face):
+        vertex = bsp.VERTICES[vertex]
+        tex_info = bsp.TEXINFO[face.tex_info]
+        tex_data = bsp.TEXDATA[tex_info.tex_data]
         texture = tex_info.texture
         u = vector.dot(vertex, (texture.s.x, texture.s.y, texture.s.z)) + texture.s.offset
         v = vector.dot(vertex, (texture.t.x, texture.t.y, texture.t.z)) + texture.t.offset
@@ -65,7 +68,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
             edges = [(bsp.EDGES[se] if se > -1 else bsp.EDGES[se][::-1]) for se in surfedges]
             vertices = [e[0] for e in edges]
             for vertex in vertices:
-                vt_u, vt_v = uvs_of(vertex)
+                vt_u, vt_v = uvs_of(vertex, face)
                 yield f"vt {vt_u} {vt_v}"
                 vt = vt_count
                 vt_count += 1
