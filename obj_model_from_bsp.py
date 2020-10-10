@@ -69,7 +69,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
             vertices = [e[0] for e in edges]
             for vertex in vertices:
                 vt_u, vt_v = uvs_of(vertex, face)
-                yield f"vt {vt_u} {vt_v}"
+                yield f"vt {vt_u} {vt_v}\n"
                 vt = vt_count
                 vt_count += 1
                 f.append((vertex, vt, normal))
