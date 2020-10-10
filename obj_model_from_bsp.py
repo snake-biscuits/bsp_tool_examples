@@ -17,7 +17,6 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
         yield f"v {vertex.x} {vertex.y} {vertex.z}\n"
     for plane in bsp.PLANES:
         yield f"vn {plane.normal.x} {plane.normal.y} {plane.normal.z}\n"
-    vt_count = 1
     faces_by_material: Dict[str, List[int]] = {}
     # ^ {material: [face_index]}
     disps_by_material: Dict[str, List[int]] = {}
@@ -56,6 +55,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
     face_number = 0
     current_progress = 0.1
     print("0...", end="")
+    vt_count = 0
     for material in faces_by_material:
         if "SKYBOX" in material:
             yield f"o {material}"
@@ -63,7 +63,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
         for face_index in faces_by_material[material]:
             f: List[tuple] = list()
             face = bsp.FACES[face_index]
-            normal = face.plane + 1  # vn index
+            normal = face.plane  # vn index
             surfedges = bsp.SURFEDGES[face.first_edge:(face.first_edge + face.num_edges)]
             edges = [(bsp.EDGES[se] if se > -1 else bsp.EDGES[se][::-1]) for se in surfedges]
             vertices = [e[0] for e in edges]
@@ -72,7 +72,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
                 yield f"vt {vt_u} {vt_v}\n"
                 vt = vt_count
                 vt_count += 1
-                f.append((vertex, vt, normal))
+                f.append((vertex + 1, vt + 1, normal + 1))
             yield "f " + ' '.join([f"{v}/{vt}/{vn}" for v, vt, vn in reversed(f)]) + "\n"
             face_number += 1
             if face_number >= len(bsp.FACES) * current_progress:
@@ -80,6 +80,7 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
                 current_progress += 0.1
     # DISPLACEMENTS
     v_count = len(bsp.VERTICES)
+    vn_count = len(bsp.PLANES) + 1
     disp_no = 0
     yield "g displacements\n"
     for material in disps_by_material:
@@ -91,18 +92,21 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
             normal = disp_vs[0][1]
             f = []
             for v, vn, vt, vt2, colour in disp_vs:
-                yield f"v {vector.vec3(*v):}\nvt {vector.vec2(*vt):}\n"
+                yield f"v {vector.vec3(*v):}\n"
+                yield f"vt {vector.vec2(*vt):}\n"
+            yield f"vn {vector.vec3(*vn):}\n"
             power = bsp.DISP_INFO[bsp.FACES[face_index].disp_info].power
             tris = bsp.mod.displacement_indices(power)
             for A, B, C in zip(tris[::3], tris[1::3], tris[2::3]):
-                A = (A + v_count, A + vt_count, normal)
-                B = (B + v_count, B + vt_count, normal)
-                C = (C + v_count, C + vt_count, normal)
+                A = (A + v_count, A + vt_count, vn_count)
+                B = (B + v_count, B + vt_count, vn_count)
+                C = (C + v_count, C + vt_count, vn_count)
                 A, B, C = [map(str, i) for i in (C, B, A)]  # CCW FLIP
                 yield f"f {'/'.join(A)} {'/'.join(B)} {'/'.join(C)}\n"
             disp_size = (2 ** power + 1) ** 2
             v_count += disp_size
             vt_count += disp_size
+            vn_count += 1
             face_number += 1
             if face_number >= len(bsp.FACES) * current_progress:
                 print(f'{current_progress * 10:.0f}...', end='')
@@ -163,8 +167,7 @@ if __name__ == "__main__":
     # # parser.add_argument("--outfile", default="")
     # # name an output, how will it work for multiple files?
     # parser.print_help()
-    import os
-    sys.argv.append(os.path.realpath("hightower_assets.bsp"))
+    sys.argv.append("hightower_assets.bsp")
     if len(sys.argv) > 1:  # drag & drop obj converter
         # if game not in ("Titanfall 2", "Apex Legends"):
         write_obj = source_bsp_to_obj
