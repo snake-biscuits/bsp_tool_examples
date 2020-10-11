@@ -38,13 +38,13 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
                 disps_by_material[material] = []
             disps_by_material[material].append(face_index)
 
-    def uvs_of(vertex, face):
-        vertex = bsp.VERTICES[vertex]
+    def uvs_of(vertex_index, face):
+        vertex = bsp.VERTICES[vertex_index]
         tex_info = bsp.TEXINFO[face.tex_info]
         tex_data = bsp.TEXDATA[tex_info.tex_data]
         texture = tex_info.texture
         u = vector.dot(vertex, (texture.s.x, texture.s.y, texture.s.z)) + texture.s.offset
-        v = vector.dot(vertex, (texture.t.x, texture.t.y, texture.t.z)) + texture.t.offset
+        v = -vector.dot(vertex, (texture.t.x, texture.t.y, texture.t.z)) + texture.t.offset
         view_width = tex_data.view_width
         view_height = tex_data.view_height
         u /= view_width if view_width != 0 else 1
@@ -57,50 +57,49 @@ def source_bsp_to_obj(bsp) -> Generator[str, None, None]:  # TODO: write .mtl fo
     print("0...", end="")
     vt_count = 0
     for material in faces_by_material:
-        if "SKYBOX" in material:
+        if "SKYBOX" in material:  # assumes skybox is last
             yield f"o {material}"
         yield f"usemtl {material}\n"
         for face_index in faces_by_material[material]:
-            f: List[tuple] = list()
             face = bsp.FACES[face_index]
-            normal = face.plane  # vn index
             surfedges = bsp.SURFEDGES[face.first_edge:(face.first_edge + face.num_edges)]
-            edges = [(bsp.EDGES[se] if se > -1 else bsp.EDGES[se][::-1]) for se in surfedges]
-            vertices = [e[0] for e in edges]
-            for vertex in vertices:
-                vt_u, vt_v = uvs_of(vertex, face)
+            edges = [(bsp.EDGES[se] if se > -1 else bsp.EDGES[-se][::-1]) for se in surfedges]
+            vs = [e[0] for e in edges]
+            vn = face.plane
+            f = list()
+            for v in vs:
+                vt_u, vt_v = uvs_of(v, face)
                 yield f"vt {vt_u} {vt_v}\n"
                 vt = vt_count
                 vt_count += 1
-                f.append((vertex + 1, vt + 1, normal + 1))
-            yield "f " + ' '.join([f"{v}/{vt}/{vn}" for v, vt, vn in reversed(f)]) + "\n"
+                f.append((v + 1, vt + 1, vn + 1))
+            yield "f " + " ".join([f"{v}/{vt}/{vn}" for v, vt, vn in reversed(f)]) + "\n"
             face_number += 1
             if face_number >= len(bsp.FACES) * current_progress:
                 print(f"{current_progress * 10:.0f}...", end="")
                 current_progress += 0.1
     # DISPLACEMENTS
-    v_count = len(bsp.VERTICES)
+    v_count = len(bsp.VERTICES) + 1
     vn_count = len(bsp.PLANES) + 1
     disp_no = 0
     yield "g displacements\n"
     for material in disps_by_material:
-        yield "usemtl {material}\n"
+        yield f"usemtl {material}\n"
         for face_index in disps_by_material[material]:
             yield f"o displacement_{disp_no}\n"
             disp_no += 1
             disp_vs = bsp.vertices_of_displacement(face_index)
-            normal = disp_vs[0][1]
             f = []
             for v, vn, vt, vt2, colour in disp_vs:
                 yield f"v {vector.vec3(*v):}\n"
                 yield f"vt {vector.vec2(*vt):}\n"
-            yield f"vn {vector.vec3(*vn):}\n"
+            vn = bsp.FACES[face_index].plane + 1
             power = bsp.DISP_INFO[bsp.FACES[face_index].disp_info].power
             tris = bsp.mod.displacement_indices(power)
             for A, B, C in zip(tris[::3], tris[1::3], tris[2::3]):
-                A = (A + v_count, A + vt_count, vn_count)
-                B = (B + v_count, B + vt_count, vn_count)
-                C = (C + v_count, C + vt_count, vn_count)
+                A = (A + v_count, A + vt_count, vn)
+                B = (B + v_count, B + vt_count, vn)
+                C = (C + v_count, C + vt_count, vn)
                 A, B, C = [map(str, i) for i in (C, B, A)]  # CCW FLIP
                 yield f"f {'/'.join(A)} {'/'.join(B)} {'/'.join(C)}\n"
             disp_size = (2 ** power + 1) ** 2
