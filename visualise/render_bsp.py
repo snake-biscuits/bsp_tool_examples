@@ -6,16 +6,15 @@ import time
 import struct
 import sys
 
+import bsp_tool
 import numpy as np
 from OpenGL.GL import *
 from OpenGL.GL.shaders import compileShader, compileProgram
 from OpenGL.GLU import *
 from sdl2 import *
 
-from utils import camera
-from utils import vector
-sys.path.insert(0, "../")
-import bsp_tool
+from utilities import camera
+from utilities import vector
 
 
 camera.sensitivity = 2
