@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="info_target_clientside" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_target" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that does nothing.
+Very useful as a positioning entity for other entities to refer to (i.e.
+the endpoint of an env_beam)
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<model key="model" name="World Model"></model>
+<string key="sound_stop_move" name="sound_stop_move">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_5" name="link_to_guid_5">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_3" name="link_to_guid_3">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<string key="route_name" name="route_name">New in Titanfall; TODO: identify</string>
+<string key="traverseType" name="traverseType">New in Titanfall; TODO: identify</string>
+<string key="perfect_circular_rotation" name="perfect_circular_rotation">New in Titanfall; TODO: identify</string>
+<string key="circular_rotation_time" name="circular_rotation_time">New in Titanfall; TODO: identify</string>
+<string key="hardpointFrontlineOverride" name="hardpointFrontlineOverride">New in Titanfall; TODO: identify</string>
+<string key="script_goal_radius" name="script_goal_radius">New in Titanfall; TODO: identify</string>
+<string key="ease_to_node" name="ease_to_node">New in Titanfall; TODO: identify</string>
+<string key="script_goal_height" name="script_goal_height">New in Titanfall; TODO: identify</string>
+<string key="locationName" name="locationName">New in Titanfall; TODO: identify</string>
+<string key="script_radius" name="script_radius">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="scr_signal" name="scr_signal">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="phase_5" name="phase_5">New in Titanfall; TODO: identify</string>
+<string key="clear_potential_threat_pos" name="clear_potential_threat_pos">New in Titanfall; TODO: identify</string>
+<string key="script_sound_delay" name="script_sound_delay">New in Titanfall; TODO: identify</string>
+<string key="fan_loop_sound" name="fan_loop_sound">New in Titanfall; TODO: identify</string>
+<string key="player_collides" name="player_collides">New in Titanfall; TODO: identify</string>
+<model key="leveled_model" name="leveled_model">New in Titanfall; TODO: identify</model>
+<string key="phase_3" name="phase_3">New in Titanfall; TODO: identify</string>
+<string key="strength" name="strength">New in Titanfall; TODO: identify</string>
+<string key="skip_runto" name="skip_runto">New in Titanfall; TODO: identify</string>
+<string key="script_delay_max" name="script_delay_max">New in Titanfall; TODO: identify</string>
+<string key="aiType" name="aiType">New in Titanfall; TODO: identify</string>
+<string key="phase_8" name="phase_8">New in Titanfall; TODO: identify</string>
+<string key="phase_4" name="phase_4">New in Titanfall; TODO: identify</string>
+<string key="phase_6" name="phase_6">New in Titanfall; TODO: identify</string>
+<targetname key="triggerTarget" name="triggerTarget">New in Titanfall; TODO: identify</targetname>
+<string key="link_to_guid_7" name="link_to_guid_7">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_8" name="link_to_guid_8">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_6" name="link_to_guid_6">New in Titanfall; TODO: identify</string>
+<string key="scr_flag_wait_clear" name="scr_flag_wait_clear">New in Titanfall; TODO: identify</string>
+<string key="script_predelay" name="script_predelay">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="path_speed" name="path_speed">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_10" name="link_to_guid_10">New in Titanfall; TODO: identify</string>
+<string key="bombSiteLocation" name="bombSiteLocation">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_9" name="link_to_guid_9">New in Titanfall; TODO: identify</string>
+<string key="script_loop" name="script_loop">New in Titanfall; TODO: identify</string>
+<string key="sound_start_move" name="sound_start_move">New in Titanfall; TODO: identify</string>
+<string key="phase_1" name="phase_1">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<string key="shutoff_sound" name="shutoff_sound">New in Titanfall; TODO: identify</string>
+<string key="soundName" name="soundName">New in Titanfall; TODO: identify</string>
+<string key="instance_name" name="instance_name">New in Titanfall; TODO: identify</string>
+<string key="phase_7" name="phase_7">New in Titanfall; TODO: identify</string>
+<string key="radius" name="radius">New in Titanfall; TODO: identify</string>
+<string key="linkedEntsArePushers" name="linkedEntsArePushers">New in Titanfall; TODO: identify</string>
+<string key="turretId" name="turretId">New in Titanfall; TODO: identify</string>
+<string key="scr_flag_clear" name="scr_flag_clear">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_12" name="link_to_guid_12">New in Titanfall; TODO: identify</string>
+<string key="scr_flag_wait" name="scr_flag_wait">New in Titanfall; TODO: identify</string>
+<string key="scr_flag_set" name="scr_flag_set">New in Titanfall; TODO: identify</string>
+<string key="height" name="height">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_1" name="link_to_guid_1">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_2" name="link_to_guid_2">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="script_gravityscale" name="script_gravityscale">New in Titanfall; TODO: identify</string>
+<string key="spawner" name="spawner">New in Titanfall; TODO: identify</string>
+<string key="start_alert" name="start_alert">New in Titanfall; TODO: identify</string>
+<string key="next_silent" name="next_silent">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_13" name="link_to_guid_13">New in Titanfall; TODO: identify</string>
+<string key="collide_titan" name="collide_titan">New in Titanfall; TODO: identify</string>
+<string key="script_noteworthy" name="script_noteworthy">New in Titanfall; TODO: identify</string>
+<string key="unlink" name="unlink">New in Titanfall; TODO: identify</string>
+<string key="script_delay" name="script_delay">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_11" name="link_to_guid_11">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<string key="gamemode_sur" name="gamemode_sur">New in Titanfall; TODO: identify</string>
+<string key="teleport_to_node" name="teleport_to_node">New in Titanfall; TODO: identify</string>
+<string key="phase_2" name="phase_2">New in Titanfall; TODO: identify</string>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="script_displayScale" name="script_displayScale">New in Titanfall; TODO: identify</string>
+<string key="teleport" name="teleport">New in Titanfall; TODO: identify</string>
+<string key="script_height" name="script_height">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_4" name="link_to_guid_4">New in Titanfall; TODO: identify</string>
+<string key="script_mods" name="script_mods">New in Titanfall; TODO: identify</string>
+<string key="script_flag" name="script_flag">New in Titanfall; TODO: identify</string>
+<string key="phase_9" name="phase_9">New in Titanfall; TODO: identify</string>
+<string key="script_weapon" name="script_weapon">New in Titanfall; TODO: identify</string>
+<string key="useForRandomSpawns" name="useForRandomSpawns">New in Titanfall; TODO: identify</string>
+<angles key="face_angles" name="face_angles">New in Titanfall; TODO: identify</angles>
+<string key="hardpointFrontlineYaw" name="hardpointFrontlineYaw">New in Titanfall; TODO: identify</string>
+<string key="script_sound" name="script_sound">New in Titanfall; TODO: identify</string>
+<string key="collide_ai" name="collide_ai">New in Titanfall; TODO: identify</string>
+<string key="hardpointGroup" name="hardpointGroup">New in Titanfall; TODO: identify</string>
+<string key="wait" name="wait">New in Titanfall; TODO: identify</string>
+<targetname key="nearTarget" name="nearTarget">New in Titanfall; TODO: identify</targetname>
+<string key="ease_from_node" name="ease_from_node">New in Titanfall; TODO: identify</string>
+<string key="disable_assault_on_goal" name="disable_assault_on_goal">New in Titanfall; TODO: identify</string>
+<string key="script_fight_radius" name="script_fight_radius">New in Titanfall; TODO: identify</string>
+<string key="path_wait" name="path_wait">New in Titanfall; TODO: identify</string>
+<string key="leveled_animation" name="leveled_animation">New in Titanfall; TODO: identify</string>
+<string key="script_delay_min" name="script_delay_min">New in Titanfall; TODO: identify</string>
+<string key="start_constrained" name="start_constrained">New in Titanfall; TODO: identify</string>
+<string key="fadedist" name="fadedist">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: model, sound_stop_move, link_to_guid_5, link_to_guid_3, teamnumber, route_name, traverseType, perfect_circular_rotation, circular_rotation_time, hardpointFrontlineOverride, script_goal_radius, ease_to_node, script_goal_height, locationName, script_radius, scale, editorclass, scr_signal, script_name, phase_5, clear_potential_threat_pos, script_sound_delay, fan_loop_sound, player_collides, leveled_model, phase_3, strength, skip_runto, script_delay_max, aiType, phase_8, phase_4, phase_6, triggerTarget, link_to_guid_7, link_to_guid_8, link_to_guid_6, scr_flag_wait_clear, script_predelay, target, path_speed, solid, link_to_guid_10, bombSiteLocation, link_to_guid_9, script_loop, sound_start_move, phase_1, gamemode_ffa, shutoff_sound, soundName, instance_name, phase_7, radius, linkedEntsArePushers, turretId, scr_flag_clear, link_to_guid_12, scr_flag_wait, scr_flag_set, height, link_to_guid_1, link_to_guid_0, link_to_guid_2, spawnflags, link_guid, script_gravityscale, spawner, start_alert, next_silent, link_to_guid_13, collide_titan, script_noteworthy, unlink, script_delay, link_to_guid_11, gamemode_lh, gamemode_sur, teleport_to_node, phase_2, gamemode_fw, script_displayScale, teleport, script_height, link_to_guid_4, script_mods, script_flag, phase_9, script_weapon, useForRandomSpawns, face_angles, hardpointFrontlineYaw, script_sound, collide_ai, hardpointGroup, wait, nearTarget, ease_from_node, disable_assault_on_goal, script_fight_radius, path_wait, leveled_animation, script_delay_min, start_constrained, fadedist
+Removed: parentname
+TODO: identify changes
+</point>
+
+<point name="info_particle_system" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that spawns a particle system built using the particle editor.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="effect_name" name="Particle System Name" value="None"></string>
+<boolean key="start_active" name="Start Active?" value="0"></boolean>
+<string key="cpoint1" name="Control Point 1" value="None">If set, control point 1 of the effect will be at this entity's location.</string>
+<string key="cpoint2" name="Control Point 2" value="None">If set, control point 2 of the effect will be at this entity's location.
+If control point 1 is not set, this will be ignored.</string>
+<string key="kill_if_over_limit" name="kill_if_over_limit">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="warmup_time" name="warmup_time">New in Titanfall; TODO: identify</string>
+<string key="start_delay" name="start_delay">New in Titanfall; TODO: identify</string>
+<string key="script_flag" name="script_flag">New in Titanfall; TODO: identify</string>
+<string key="flag_reverse" name="flag_reverse">New in Titanfall; TODO: identify</string>
+<string key="kill_for_replay" name="kill_for_replay">New in Titanfall; TODO: identify</string>
+<string key="lightingMethod" name="lightingMethod">New in Titanfall; TODO: identify</string>
+<string key="ClientSide" name="ClientSide">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="fogcolor" name="fogcolor">New in Titanfall; TODO: identify</string>
+<string key="warmup_and_pause" name="warmup_and_pause">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="fogenable" name="fogenable">New in Titanfall; TODO: identify</string>
+<string key="stop_delay" name="stop_delay">New in Titanfall; TODO: identify</string>
+<string key="in_skybox" name="in_skybox">New in Titanfall; TODO: identify</string>
+<string key="playEndCap" name="playEndCap">New in Titanfall; TODO: identify</string>
+<string key="VisibilityFlags" name="VisibilityFlags">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: kill_if_over_limit, model, parentBrushModel, warmup_time, start_delay, script_flag, flag_reverse, kill_for_replay, lightingMethod, ClientSide, link_guid, fogcolor, warmup_and_pause, scale, editorclass, fogenable, stop_delay, in_skybox, playEndCap, VisibilityFlags
+Removed: cpoint35, cpoint9, cpoint4, cpoint11, cpoint7, cpoint37, cpoint28, cpoint39, cpoint42, cpoint45, cpoint22, cpoint51, cpoint14, cpoint29, cpoint60, cpoint1_parent, cpoint36, cpoint26, cpoint32, cpoint61, cpoint6, cpoint30, cpoint23, cpoint57, cpoint19, cpoint8, cpoint55, cpoint40, cpoint53, cpoint2_parent, cpoint18, cpoint17, cpoint25, cpoint34, cpoint41, cpoint47, cpoint38, cpoint20, cpoint13, cpoint27, cpoint59, cpoint56, cpoint10, cpoint7_parent, cpoint6_parent, cpoint3, cpoint12, cpoint21, cpoint5_parent, cpoint16, cpoint44, cpoint50, cpoint4_parent, cpoint49, parentname, cpoint33, cpoint54, cpoint43, cpoint48, cpoint5, cpoint3_parent, cpoint63, cpoint46, cpoint52, cpoint15, cpoint58, flag_as_weather, cpoint62, cpoint24, cpoint31
+TODO: identify changes
+</point>
+
+<point name="beam_spotlight" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="spotlightwidth" name="spotlightwidth">New in Titanfall; TODO: identify</string>
+<string key="maxspeed" name="maxspeed">New in Titanfall; TODO: identify</string>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<string key="rendermode" name="rendermode">New in Titanfall; TODO: identify</string>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="renderamt" name="renderamt">New in Titanfall; TODO: identify</string>
+<string key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="disablereceiveshadows" name="disablereceiveshadows">New in Titanfall; TODO: identify</string>
+<string key="spotlightlength" name="spotlightlength">New in Titanfall; TODO: identify</string>
+<string key="HDRColorScale" name="HDRColorScale">New in Titanfall; TODO: identify</string>
+<string key="renderfx" name="renderfx">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+</classes>

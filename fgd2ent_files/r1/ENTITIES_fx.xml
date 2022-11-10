@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="info_target_clientside" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="kill_for_replay" name="kill_for_replay">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="in_skybox" name="in_skybox">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="start_active" name="start_active">New in Titanfall; TODO: identify</string>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="effect_name" name="effect_name">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="beam_spotlight" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="maxspeed" name="maxspeed">New in Titanfall; TODO: identify</string>
+<string key="rendermode" name="rendermode">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<string key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="disablereceiveshadows" name="disablereceiveshadows">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="spotlightwidth" name="spotlightwidth">New in Titanfall; TODO: identify</string>
+<string key="renderamt" name="renderamt">New in Titanfall; TODO: identify</string>
+<string key="spotlightlength" name="spotlightlength">New in Titanfall; TODO: identify</string>
+<string key="renderfx" name="renderfx">New in Titanfall; TODO: identify</string>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="HDRColorScale" name="HDRColorScale">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="env_sprite_clientside" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="disablereceiveshadows" name="disablereceiveshadows">New in Titanfall; TODO: identify</string>
+<string key="renderfx" name="renderfx">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="HDRColorScale" name="HDRColorScale">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="framerate" name="framerate">New in Titanfall; TODO: identify</string>
+<string key="renderamt" name="renderamt">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="GlowProxySize" name="GlowProxySize">New in Titanfall; TODO: identify</string>
+<string key="rendermode" name="rendermode">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<color key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</color>
+<model key="model" name="World Model"></model>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_particle_system" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that spawns a particle system built using the particle editor.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="effect_name" name="Particle System Name" value="None"></string>
+<boolean key="start_active" name="Start Active?" value="0"></boolean>
+<string key="kill_for_replay" name="kill_for_replay">New in Titanfall; TODO: identify</string>
+<string key="VisibilityFlags" name="VisibilityFlags">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="in_skybox" name="in_skybox">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="ClientSide" name="ClientSide">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+----- NOTES -----
+Introduced by Source
+Added: kill_for_replay, VisibilityFlags, solid, in_skybox, scale, editorclass, ClientSide, model
+Removed: cpoint54, cpoint17, cpoint24, cpoint14, cpoint7, cpoint9, cpoint22, cpoint63, cpoint23, cpoint50, cpoint56, cpoint49, cpoint6_parent, parentname, cpoint55, cpoint1, cpoint39, cpoint61, cpoint3, cpoint2, cpoint19, cpoint44, cpoint28, cpoint43, cpoint45, cpoint53, cpoint7_parent, cpoint60, cpoint38, cpoint58, cpoint5, cpoint62, cpoint27, cpoint25, cpoint46, cpoint35, cpoint29, cpoint51, cpoint16, cpoint37, cpoint52, cpoint40, cpoint30, cpoint10, cpoint11, cpoint36, cpoint20, cpoint31, cpoint26, cpoint41, cpoint6, cpoint32, cpoint18, cpoint33, cpoint57, cpoint12, cpoint2_parent, cpoint8, cpoint3_parent, cpoint59, cpoint34, cpoint42, cpoint13, cpoint1_parent, cpoint48, cpoint4, cpoint21, flag_as_weather, cpoint47, cpoint15, cpoint4_parent, cpoint5_parent
+TODO: identify changes
+</point>
+
+<point name="info_target" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that does nothing.
+Very useful as a positioning entity for other entities to refer to (i.e.
+the endpoint of an env_beam)
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="in_skybox" name="in_skybox">New in Titanfall; TODO: identify</string>
+<string key="spectreSpawn" name="spectreSpawn">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="anim" name="anim">New in Titanfall; TODO: identify</string>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="fxgroup" name="fxgroup">New in Titanfall; TODO: identify</string>
+<string key="effect_name" name="effect_name">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: in_skybox, spectreSpawn, target, anim, spawnflags, editorclass, fxgroup, effect_name, scale
+Removed: parentname
+TODO: identify changes
+</point>
+</classes>

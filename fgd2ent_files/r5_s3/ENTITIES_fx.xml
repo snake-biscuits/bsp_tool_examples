@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="info_particle_system" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that spawns a particle system built using the particle editor.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="effect_name" name="Particle System Name" value="None"></string>
+<boolean key="start_active" name="Start Active?" value="0"></boolean>
+<string key="kill_for_replay" name="kill_for_replay">New in Titanfall; TODO: identify</string>
+<string key="start_delay" name="start_delay">New in Titanfall; TODO: identify</string>
+<string key="ClientSide" name="ClientSide">New in Titanfall; TODO: identify</string>
+<string key="VisibilityFlags" name="VisibilityFlags">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="warmup_time" name="warmup_time">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="fogcolor" name="fogcolor">New in Titanfall; TODO: identify</string>
+<string key="stop_delay" name="stop_delay">New in Titanfall; TODO: identify</string>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="warmup_and_pause" name="warmup_and_pause">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="flag_reverse" name="flag_reverse">New in Titanfall; TODO: identify</string>
+<string key="fogenable" name="fogenable">New in Titanfall; TODO: identify</string>
+<string key="script_flag" name="script_flag">New in Titanfall; TODO: identify</string>
+<string key="in_skybox" name="in_skybox">New in Titanfall; TODO: identify</string>
+<string key="playEndCap" name="playEndCap">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="kill_if_over_limit" name="kill_if_over_limit">New in Titanfall; TODO: identify</string>
+<string key="radius" name="radius">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: kill_for_replay, start_delay, ClientSide, VisibilityFlags, model, warmup_time, scale, solid, fogcolor, stop_delay, editorclass, warmup_and_pause, link_guid, spawnclass, flag_reverse, fogenable, script_flag, in_skybox, playEndCap, script_name, kill_if_over_limit, radius
+Removed: cpoint6, cpoint14, cpoint30, cpoint33, cpoint35, cpoint54, cpoint43, cpoint2, cpoint4, cpoint50, cpoint5, cpoint2_parent, cpoint18, cpoint12, cpoint9, cpoint22, cpoint49, cpoint46, cpoint63, cpoint61, cpoint21, cpoint51, cpoint4_parent, cpoint40, cpoint16, cpoint3, cpoint32, cpoint7_parent, cpoint10, cpoint58, cpoint17, cpoint57, cpoint6_parent, cpoint24, cpoint52, cpoint44, cpoint55, cpoint56, cpoint60, cpoint45, cpoint28, cpoint37, cpoint19, cpoint13, cpoint29, cpoint53, cpoint38, flag_as_weather, cpoint59, cpoint42, cpoint7, cpoint5_parent, parentname, cpoint39, cpoint15, cpoint48, cpoint25, cpoint27, cpoint1_parent, cpoint26, cpoint41, cpoint23, cpoint20, cpoint47, cpoint62, cpoint31, cpoint1, cpoint11, cpoint3_parent, cpoint8, cpoint34, cpoint36
+TODO: identify changes
+</point>
+</classes>

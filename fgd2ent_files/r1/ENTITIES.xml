@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+<!-- used by light, light_spot -->
+<list name="style">
+  <item name="Normal" value="0"/>
+  <item name="Fluorescent flicker" value="10"/>
+  <item name="Slow, strong pulse" value="2"/>
+  <item name="Slow pulse, noblack" value="11"/>
+  <item name="Gentle pulse" value="5"/>
+  <item name="Flicker A" value="1"/>
+  <item name="Flicker B" value="6"/>
+  <item name="Candle A" value="3"/>
+  <item name="Candle B" value="7"/>
+  <item name="Candle C" value="8"/>
+  <item name="Fast strobe" value="4"/>
+  <item name="Slow strobe" value="9"/>
+</list>
+
+
+<!-- used by move_rope -->
+<list name="positionInterpolator">
+  <item name="Linear" value="0"/>
+  <item name="Catmull-Rom Spline" value="1"/>
+  <item name="Rope" value="2"/>
+</list>
+
+
+<!-- used by move_rope, keyframe_rope -->
+<list name="type">
+  <item name="Rope" value="0"/>
+  <item name="Semi-rigid" value="1"/>
+  <item name="Rigid" value="2"/>
+</list>
+
+
+<!-- used by trigger_hurt -->
+<list name="damagemodel">
+  <item name="Normal" value="0"/>
+  <item name="Doubling w/forgiveness" value="1"/>
+</list>
+
+
+<!-- used by prop_physics -->
+<list name="performanceMode">
+  <item name="Normal" value="0"/>
+  <item name="No Gibs" value="1"/>
+  <item name="Full Gibs on All Platforms" value="2"/>
+  <item name="Reduced gibs" value="3"/>
+</list>
+
+
+<!-- used by prop_physics -->
+<list name="renderfx">
+  <item name="Normal" value="0"/>
+  <item name="Slow Pulse" value="1"/>
+  <item name="Fast Pulse" value="2"/>
+  <item name="Slow Wide Pulse" value="3"/>
+  <item name="Fast Wide Pulse" value="4"/>
+  <item name="Slow Strobe" value="9"/>
+  <item name="Fast Strobe" value="10"/>
+  <item name="Faster Strobe" value="11"/>
+  <item name="Slow Flicker" value="12"/>
+  <item name="Fast Flicker" value="13"/>
+  <item name="Slow Fade Away" value="5"/>
+  <item name="Fast Fade Away" value="6"/>
+  <item name="Slow Become Solid" value="7"/>
+  <item name="Fast Become Solid" value="8"/>
+  <item name="Constant Glow" value="14"/>
+  <item name="Distort" value="15"/>
+  <item name="Hologram (Distort + fade)" value="16"/>
+  <item name="Cull By Distance (TEST)" value="23"/>
+  <item name="Spotlight FX" value="24"/>
+  <item name="Fade Near" value="26"/>
+</list>
+
+
+<!-- used by prop_physics -->
+<list name="damagetype">
+  <item name="Blunt" value="0"/>
+  <item name="Sharp" value="1"/>
+</list>
+
+
+<!-- used by prop_physics, func_breakable_surf, func_breakable -->
+<list name="rendermode">
+  <item name="Normal" value="0"/>
+  <item name="Color" value="1"/>
+  <item name="Texture" value="2"/>
+  <item name="Glow" value="3"/>
+  <item name="Solid" value="4"/>
+  <item name="Additive" value="5"/>
+  <item name="Additive Fractional Frame" value="7"/>
+  <item name="World Space Glow" value="9"/>
+  <item name="Dont Render" value="10"/>
+</list>
+
+
+<!-- used by env_soundscape_triggerable -->
+<list name="soundscape">
+  <item name="Nothing" value="Nothing"/>
+  <item name="Automatic" value="Automatic"/>
+  <item name="Automatic (dialog)" value="Automatic_Dialog"/>
+  <item name="Indoor" value="GenericIndoor"/>
+  <item name="Outdoor" value="GenericOutdoor"/>
+</list>
+
+
+<!-- used by func_breakable_surf, func_breakable -->
+<list name="material">
+  <item name="Glass" value="0"/>
+  <item name="Wood" value="1"/>
+  <item name="Metal" value="2"/>
+  <item name="Flesh" value="3"/>
+  <item name="CinderBlock" value="4"/>
+  <item name="Ceiling Tile" value="5"/>
+  <item name="Computer" value="6"/>
+  <item name="Unbreakable Glass" value="7"/>
+  <item name="Rocks" value="8"/>
+  <item name="None" value="10"/>
+</list>
+
+
+<!-- used by func_breakable_surf -->
+<list name="surfacetype">
+  <item name="Glass" value="0"/>
+  <item name="Tile" value="1"/>
+</list>
+
+
+<!-- used by func_breakable_surf, func_breakable -->
+<list name="explosion">
+  <item name="Random" value="0"/>
+  <item name="Relative to Attack" value="1"/>
+  <item name="Use Precise Gib Dir" value="2"/>
+</list>
+
+
+<!-- used by func_breakable_surf, func_breakable -->
+<list name="spawnobject">
+  <item name="item_battery" value="1"/>
+  <item name="item_healthkit" value="2"/>
+  <item name="item_ammo_pistol" value="3"/>
+  <item name="item_ammo_pistol_large" value="4"/>
+  <item name="item_ammo_smg1" value="5"/>
+  <item name="item_ammo_smg1_large" value="6"/>
+  <item name="item_ammo_ar2" value="7"/>
+  <item name="item_ammo_ar2_large" value="8"/>
+  <item name="item_box_buckshot" value="9"/>
+  <item name="item_flare_round" value="10"/>
+  <item name="item_box_flare_rounds" value="11"/>
+  <item name="item_ml_grenade" value="12"/>
+  <item name="item_smg1_grenade" value="13"/>
+  <item name="item_box_sniper_rounds" value="14"/>
+  <item name="unused1" value="15"/>
+  <item name="weapon_stunstick" value="16"/>
+  <item name="weapon_ar1" value="17"/>
+  <item name="weapon_ar2" value="18"/>
+  <item name="unused2" value="19"/>
+  <item name="weapon_ml" value="20"/>
+  <item name="weapon_smg1" value="21"/>
+  <item name="weapon_smg2" value="22"/>
+  <item name="weapon_slam" value="23"/>
+  <item name="weapon_shotgun" value="24"/>
+  <item name="weapon_molotov" value="25"/>
+  <item name="item_dynamic_resupply" value="26"/>
+</list>
+
+
+<!-- used by func_breakable_surf, func_breakable -->
+<list name="propdata">
+  <item name="None" value="0"/>
+  <item name="Wooden.Tiny" value="1"/>
+  <item name="Wooden.Small" value="2"/>
+  <item name="Wooden.Medium" value="3"/>
+  <item name="Wooden.Large" value="4"/>
+  <item name="Wooden.Huge" value="5"/>
+  <item name="Metal.Small" value="6"/>
+  <item name="Metal.Medium" value="7"/>
+  <item name="Metal.Large" value="8"/>
+  <item name="Cardboard.Small" value="9"/>
+  <item name="Cardboard.Medium" value="10"/>
+  <item name="Cardboard.Large" value="11"/>
+  <item name="Stone.Small" value="12"/>
+  <item name="Stone.Medium" value="13"/>
+  <item name="Stone.Large" value="14"/>
+  <item name="Stone.Huge" value="15"/>
+  <item name="Glass.Small" value="16"/>
+  <item name="Plastic.Small" value="17"/>
+  <item name="Plastic.Medium" value="18"/>
+  <item name="Plastic.Large" value="19"/>
+  <item name="Pottery.Small" value="20"/>
+  <item name="Pottery.Medium" value="21"/>
+  <item name="Pottery.Large" value="22"/>
+  <item name="Pottery.Huge" value="23"/>
+  <item name="Glass.Window" value="24"/>
+</list>
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="light_spot" color="1 0 1" box="-8 -8 -8 8 8 8">
+An invisible and directional spotlight.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<style key="style" name="Appearance" value="0"></style>
+<string key="_fifty_percent_distance" name="50 percent falloff distance" value="0">Distance at which brightness should fall off to 50%.
+If set, overrides linear constant and quadratic paramaters.</string>
+<string key="_zero_percent_distance" name="0 percent falloff distance" value="0">Distance at which brightness should fall off to negligible (1/256)%.
+Must set _fifty_percent_distance to use.</string>
+<integer key="_inner_cone" name="Inner (bright) angle" value="30"></integer>
+<integer key="_cone" name="Outer (fading) angle" value="45"></integer>
+<integer key="_exponent" name="Focus" value="1"></integer>
+<integer key="_distance" name="Maximum distance" value="0">This is the distance that light is allowed to cast, in inches.</integer>
+<string key="pitch" name="Pitch" value="-90"></string>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="shadow" name="shadow">New in Titanfall; TODO: identify</string>
+<string key="realtime" name="realtime">New in Titanfall; TODO: identify</string>
+<string key="fogdircolorstrength" name="fogdircolorstrength">New in Titanfall; TODO: identify</string>
+<string key="_half_bright_fraction" name="_half_bright_fraction">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="realtime_shadows" name="realtime_shadows">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+----- NOTES -----
+Introduced by Source
+Added: brightness, color, shadow, realtime, fogdircolorstrength, _half_bright_fraction, spawnclass, spawnflags, realtime_shadows, model
+Removed: _quadratic_attn, _lightscaleHDR, _constant_attn, _lightHDR, _hardfalloff, _linear_attn, target, pattern
+TODO: identify changes
+</point>
+
+<point name="info_teleport_destination" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that does nothing itself, but can be used to specify the destination for a trigger_teleport entity.
+An info_target can be used instead.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<model key="model" name="World Model"></model>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Source
+Added: model, scale
+Removed: parentname
+TODO: identify changes
+</point>
+
+<point name="prop_exfil_panel" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="refuel" name="refuel">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="drawinfastreflection" name="drawinfastreflection">New in Titanfall; TODO: identify</string>
+<string key="rendermode" name="rendermode">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<string key="disableshadows" name="disableshadows">New in Titanfall; TODO: identify</string>
+<string key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="disablereceiveshadows" name="disablereceiveshadows">New in Titanfall; TODO: identify</string>
+<string key="instamission" name="instamission">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="MaxAnimTime" name="MaxAnimTime">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="HoldAnimation" name="HoldAnimation">New in Titanfall; TODO: identify</string>
+<string key="DisableBoneFollowers" name="DisableBoneFollowers">New in Titanfall; TODO: identify</string>
+<string key="renderamt" name="renderamt">New in Titanfall; TODO: identify</string>
+<string key="SuppressAnimSounds" name="SuppressAnimSounds">New in Titanfall; TODO: identify</string>
+<string key="skin" name="skin">New in Titanfall; TODO: identify</string>
+<string key="renderfx" name="renderfx">New in Titanfall; TODO: identify</string>
+<string key="pressuredelay" name="pressuredelay">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="SetBodyGroup" name="SetBodyGroup">New in Titanfall; TODO: identify</string>
+<string key="ExplodeDamage" name="ExplodeDamage">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="ExplodeRadius" name="ExplodeRadius">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="RandomAnimation" name="RandomAnimation">New in Titanfall; TODO: identify</string>
+<string key="fadedist" name="fadedist">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="MinAnimTime" name="MinAnimTime">New in Titanfall; TODO: identify</string>
+<string key="PerformanceMode" name="PerformanceMode">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="move_rope" color="1 0 1" box="-8 -8 -8 8 8 8">
+The first node in set of nodes that are used to place ropes in the world.
+It should connect to 1 or more keyframe_rope entities.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="NextKey" name="Next KeyFrame" value="None">Name of the next keyframe along this keyframe path.</string>
+<integer key="MoveSpeed" name="Speed (units per second)" value="64"></integer>
+<integer key="Slack" name="Slack" value="25">How much extra length the rope has (by default it has the length between its two endpoints in the editor).</integer>
+<type key="Type" name="Type" value="0"></type>
+<integer key="Subdiv" name="Subdivision" value="2">Number of subdivisions between each rope segment.
+Maximum value is 8.
+Higher values make smoother ropes, but are slower to render.</integer>
+<boolean key="Barbed" name="Barbed" value="0">Test effect that makes the rope look sharper and more barbed.</boolean>
+<string key="Width" name="Width (1-64)" value="2">Width of the rope.</string>
+<string key="TextureScale" name="Texture Scale" value="1">This changes the texture resolution.
+The default resolution is 4 pixels per inch.
+Larger values stretch the texture and smaller values scrunch it up.</string>
+<boolean key="Collide" name="Collide with world" value="0"></boolean>
+<boolean key="Dangling" name="Start Dangling" value="0">When set to Yes, the rope starts out detached from its target endpoint.</boolean>
+<boolean key="Breakable" name="Breakable" value="0">When set to yes, the rope can be detached from either endpoint when shot.</boolean>
+<string key="RopeMaterial" name="Rope Material" value="cable/cable.vmt">The material to use when rendering the rope.</string>
+<positionInterpolator key="PositionInterpolator" name="Position Interpolator" value="2">Curve Type.
+Currently only type 2 (Rope) is fully supported.</positionInterpolator>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="ZiplineAutoDetachDistance" name="ZiplineAutoDetachDistance">New in Titanfall; TODO: identify</string>
+<string key="ZiplineSagEnable" name="ZiplineSagEnable">New in Titanfall; TODO: identify</string>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="ZiplineSagHeight" name="ZiplineSagHeight">New in Titanfall; TODO: identify</string>
+<string key="Zipline" name="Zipline">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="UseWind" name="UseWind">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: maxgpulevel, ZiplineAutoDetachDistance, ZiplineSagEnable, mingpulevel, maxcpulevel, ZiplineSagHeight, spawnflags, Zipline, disableX360, target, mincpulevel, UseWind
+Removed: parentname, maxdxlevel, NoWind, mindxlevel
+TODO: identify changes
+</point>
+
+<point name="env_dropzone" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="radius" name="radius">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="refuel" name="refuel">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<group name="trigger_soundscape" color="1 0 1">
+Soundscape trigger.
+It is not necessary to create outputs for this trigger.
+It automatically will trigger the soundscape referred to by its 'Soundscape' property.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<targetname key="soundscape" name="Soundscape" value="None"></targetname>
+<string key="requireLOS" name="requireLOS">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: requireLOS, spawnflags, model
+Removed: filtername, globalname, parentname
+TODO: identify changes
+</group>
+
+<point name="info_spawnpoint_flag" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="TeamNum" name="TeamNum">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="prop_bigbrother_panel" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="refuel" name="refuel">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="drawinfastreflection" name="drawinfastreflection">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="rendermode" name="rendermode">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<string key="disableshadows" name="disableshadows">New in Titanfall; TODO: identify</string>
+<string key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="disablereceiveshadows" name="disablereceiveshadows">New in Titanfall; TODO: identify</string>
+<string key="instamission" name="instamission">New in Titanfall; TODO: identify</string>
+<string key="gamemode_bb" name="gamemode_bb">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="MaxAnimTime" name="MaxAnimTime">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="HoldAnimation" name="HoldAnimation">New in Titanfall; TODO: identify</string>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="DisableBoneFollowers" name="DisableBoneFollowers">New in Titanfall; TODO: identify</string>
+<string key="renderamt" name="renderamt">New in Titanfall; TODO: identify</string>
+<string key="SuppressAnimSounds" name="SuppressAnimSounds">New in Titanfall; TODO: identify</string>
+<string key="skin" name="skin">New in Titanfall; TODO: identify</string>
+<string key="renderfx" name="renderfx">New in Titanfall; TODO: identify</string>
+<string key="pressuredelay" name="pressuredelay">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="SetBodyGroup" name="SetBodyGroup">New in Titanfall; TODO: identify</string>
+<string key="ExplodeDamage" name="ExplodeDamage">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="ExplodeRadius" name="ExplodeRadius">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="RandomAnimation" name="RandomAnimation">New in Titanfall; TODO: identify</string>
+<string key="fadedist" name="fadedist">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="MinAnimTime" name="MinAnimTime">New in Titanfall; TODO: identify</string>
+<string key="PerformanceMode" name="PerformanceMode">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="light_environment" color="1 0 1" box="-8 -8 -8 8 8 8">
+Sets the color and angle of the light from the sun and sky.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<integer key="pitch" name="Pitch" value="0">The downward pitch of the light from the sun.
+0 is horizontal, -90 is straight down.</integer>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<string key="_ambient" name="Ambient" value="255 255 255 20"></string>
+<real key="SunSpreadAngle" name="SunSpreadAngle" value="0">The angular extent of the sun for casting soft shadows.
+Higher numbers are more diffuse.
+5 is a good starting value.</real>
+<string key="fogcolor" name="fogcolor">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="cloudmask" name="cloudmask">New in Titanfall; TODO: identify</string>
+<string key="cloudoffset" name="cloudoffset">New in Titanfall; TODO: identify</string>
+<string key="_cone" name="_cone">New in Titanfall; TODO: identify</string>
+<string key="shadows" name="shadows">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="ambient_brightness" name="ambient_brightness">New in Titanfall; TODO: identify</string>
+<string key="ambient_color" name="ambient_color">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: fogcolor, color, cloudmask, cloudoffset, _cone, shadows, spawnclass, targetname, ambient_brightness, ambient_color
+Removed: _lightHDR, _AmbientScaleHDR, _ambientHDR, _lightscaleHDR
+TODO: identify changes
+</point>
+
+<point name="color_correction" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity to control the color correction in the map.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<real key="minfalloff" name="Lookup Falloff Start Distance" value="0.0">This is the distance to the start of the falloff region (-1 = everywhere)</real>
+<real key="maxfalloff" name="Lookup Falloff End Distance" value="200.0">This is the distance to the end of the falloff region (-1 = everywhere)</real>
+<real key="maxweight" name="Maximum Weight" value="1.0">This is the maximum weight for this lookup</real>
+<string key="filename" name="Lookup Table Filename" value="">This is the lookup table filename</string>
+<real key="fadeInDuration" name="Lookup Fade In Duration" value="0.0">Duration of fade in on when enabled.</real>
+<real key="fadeOutDuration" name="Lookup Fade out Duration" value="0.0">Dration of fade out on when disabled.</real>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="ambient_brightness" name="ambient_brightness">New in Titanfall; TODO: identify</string>
+<string key="ambient_color" name="ambient_color">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: brightness, color, spawnflags, ambient_brightness, ambient_color
+TODO: identify changes
+</point>
+
+<point name="info_lightprobe" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="phys_ragdollmagnet" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that acts like a magnet for ragdolls.
+Useful for crafting exaggerated ragdoll behavior (i.e.
+guys falling over rails on death).
+If the Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e.
+it attracts ragdolls to the nearest point on a line.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="axis" name="Bar Magnet Axis" value="None"></string>
+<real key="radius" name="Effective Radius" value="512">Radius in which ragdolls are affected around this entity's origin.</real>
+<real key="force" name="Force" value="5000">Magnetic force to apply to ragdolls within the radius.
+Expressed as kilograms per inch per second.
+So a force of 1000 will add 10 inches/second to a 100kg man.
+It will add 100 inches per second to a 10kg headcrab.</real>
+----- NOTES -----
+Introduced by Source
+Added: spawnflags
+Removed: target, targetname, StartDisabled, parentname
+TODO: identify changes
+</point>
+
+<point name="env_tonemap_controller" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that controls the HDR tonemapping for the player.
+Think of it as a method of controlling the exposure of the player's eyes.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Source
+</point>
+
+<group name="trigger_capture_point" color="1 0 1">
+----- KEYS -----
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</group>
+
+<point name="info_player_start" color="1 0 1" box="-8 -8 -8 8 8 8">
+This entity indicates the position and facing direction at which the player will spawn.
+Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map.
+When multiple info_player_start entities are present in a map, set the 'Master' spawnflag on one of them to indicate which one should be used when running the entire map.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="flloff" name="flloff">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Source
+Added: flloff, targetname, spawnflags, scale
+TODO: identify changes
+</point>
+
+<point name="water_lod_control" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity used to control the LOD behavior of any water in the map.
+If your map has water, this entity is required.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<real key="cheapwaterstartdistance" name="Start Transition to Cheap Water" value="1000">This is the distance from the camera that water will start transitioning to cheap water, in inches.</real>
+<real key="cheapwaterenddistance" name="End Transition to Cheap Water" value="2000">This is the distance from the camera that water will finish transitioning to cheap water, in inches.</real>
+----- NOTES -----
+Introduced by Source
+</point>
+
+<point name="light" color="1 0 1" box="-8 -8 -8 8 8 8">
+An invisible omnidirectional lightsource.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<string key="_lightHDR" name="BrightnessHDR" value="-1 -1 -1 1"></string>
+<real key="_lightscaleHDR" name="BrightnessScaleHDR" value="1">Amount to scale the light by when compiling for HDR.</real>
+<style key="style" name="Appearance" value="0"></style>
+<string key="_fifty_percent_distance" name="50 percent falloff distance" value="0">Distance at which brightness should fall off to 50%.
+If set, overrides linear constant and quadratic paramaters.</string>
+<string key="_zero_percent_distance" name="0 percent falloff distance" value="0">Distance at which brightness should fall off to negligible (1/256)%.
+Must set _fifty_percent_distance to use.</string>
+<integer key="_distance" name="Maximum Distance" value="0">This is the distance that light is allowed to cast, in inches.</integer>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="shadow" name="shadow">New in Titanfall; TODO: identify</string>
+<string key="realtime" name="realtime">New in Titanfall; TODO: identify</string>
+<string key="_cone" name="_cone">New in Titanfall; TODO: identify</string>
+<string key="realtime_shadows" name="realtime_shadows">New in Titanfall; TODO: identify</string>
+<string key="fogdensity" name="fogdensity">New in Titanfall; TODO: identify</string>
+<string key="_half_bright_fraction" name="_half_bright_fraction">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="_inner_cone" name="_inner_cone">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: brightness, color, shadow, realtime, _cone, realtime_shadows, fogdensity, _half_bright_fraction, spawnclass, spawnflags, _inner_cone
+Removed: _quadratic_attn, _hardfalloff, _constant_attn, _linear_attn, target, pattern
+TODO: identify changes
+</point>
+
+<point name="info_intermission" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that defines an intermission spot where dead players will float until they respawn.
+----- KEYS -----
+<string key="target" name="Entity to look at" value="None">Name of entity that dead players will face while in intermission at this spot.</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Source
+Added: targetname
+TODO: identify changes
+</point>
+
+<point name="npc_turret_mega_bb" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<model key="model" name="World Model"></model>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="AccuracyMultiplier" name="AccuracyMultiplier">New in Titanfall; TODO: identify</string>
+<string key="additionalequipment" name="additionalequipment">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<group name="trigger_hurt" color="1 0 1">
+A trigger volume that damages entities that touch it.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<integer key="damage" name="Damage" value="10">The amount of damage done to entities that touch this trigger.
+The damage is done every half-second.
+See also 'Damage Model' for extra details on how damage can be dealt.</integer>
+<integer key="damagecap" name="Damage Cap" value="20">Maximum damage dealt per second.
+This field is only used if you select the Doubling w/Forgiveness damage model, via the spawnflag.</integer>
+<damagemodel key="damagemodel" name="Damage Model" value="0">How damage is dealt.
+Normal always does the specified amount of damage each half second.
+Doubling starts with the specified amount and doubles it each time it hurts the toucher.
+Forgiveness means that if the toucher gets out of the trigger the damage will reset to the specified value.
+Good for making triggers that are deadly over time without having to cause massive damage on each touch.</damagemodel>
+<boolean key="nodmgforce" name="Zero Damage Force" value="0">Should the damaged entity receive no physics force from this trigger.</boolean>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="damageSourceName" name="damageSourceName">New in Titanfall; TODO: identify</string>
+<string key="_half_bright_fraction" name="_half_bright_fraction">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: brightness, damageSourceName, _half_bright_fraction, spawnflags, model
+Removed: master, globalname, damagetype, parentname, filtername
+TODO: identify changes
+</group>
+
+<point name="env_wind" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity to control wind in the map.
+Partially functional.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<integer key="minwind" name="Min normal speed" value="20">Minimum speed of the wind while idling.</integer>
+<integer key="maxwind" name="Max normal speed" value="50">Maximum speed of the wind while idling.</integer>
+<integer key="mingust" name="Min gust speed" value="100">Minimum speed of wind gusts.</integer>
+<integer key="maxgust" name="Max gust speed" value="250">Maximum speed of wind gusts.</integer>
+<integer key="mingustdelay" name="Min gust delay" value="10">Minimum time delay between random gusts.</integer>
+<integer key="maxgustdelay" name="Max gust delay" value="20">Maximum time delay between random gusts.</integer>
+<integer key="gustduration" name="Gust Duration" value="5">How long will the wind gust for.</integer>
+<integer key="gustdirchange" name="Max gust dir change (degrees)" value="20">Maximum amount that the wind's direction changes due to a gust.</integer>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Source
+Added: scale
+TODO: identify changes
+</point>
+
+<point name="script_marvin_job" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<model key="model" name="World Model"></model>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="job" name="job">New in Titanfall; TODO: identify</string>
+<string key="tempJob" name="tempJob">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="rendercolor" name="rendercolor">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<group name="trigger_multiple" color="1 0 1">
+A trigger volume that can be triggered multiple times.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<integer key="wait" name="Delay Before Reset" value="1">Amount of time, in seconds, after the trigger_multiple has triggered before it can be triggered again.
+If set to -1, it will never trigger again (in which case you should just use a trigger_once).</integer>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="scr_flagSet" name="scr_flagSet">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_6" bit="6" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: target, spawnflags, scr_flagSet, model
+Removed: filtername, globalname, parentname
+TODO: identify changes
+</group>
+
+<group name="trigger_indoor_area" color="1 0 1">
+----- KEYS -----
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</group>
+
+<point name="info_replacement_titan_spawn" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<model key="model" name="World Model"></model>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="func_window_hint" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="halfwidth" name="halfwidth">New in Titanfall; TODO: identify</string>
+<string key="right" name="right">New in Titanfall; TODO: identify</string>
+<string key="halfheight" name="halfheight">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<group name="worldspawn" color="1 0 1">
+This is the world entity.
+Each map can only contain one, and it's automatically created for you.
+----- KEYS -----
+<string key="message" name="Map Description / Title" value="None"></string>
+<string key="skyname" name="SkyBox Texture Name" value="sky_day01_01"></string>
+<string key="chaptertitle" name="Chapter Title Message" value="">Chapter Title that appears onscreen when this level starts.</string>
+<real key="maxpropscreenwidth" name="Start Fade Pixels" value="-1">Number of pixels wide at which all props in the level start to fade (&lt;0 = use fademaxdist).
+This number is ignored if the prop has a specific fade distance specified.</real>
+<real key="minpropscreenwidth" name="End Fade Pixels" value="0">Minimum number of pixels wide at which the prop is visible (0 = don't fade out).
+This number is ignored if the prop has a specific fade distance specified.</real>
+<string key="detailvbsp" name="Detail.vbsp file" value="detail.vbsp">Detail.vbsp file to use for emitting detail props (found in directory &lt;root&gt;/modname)</string>
+<string key="detailmaterial" name="Detail material file" value="detail/detailsprites">Material for detail sprites to use for drawing detail props</string>
+<string key="editor_drLastCameraAngle" name="editor_drLastCameraAngle">New in Titanfall; TODO: identify</string>
+<string key="editor_drLastCameraPos" name="editor_drLastCameraPos">New in Titanfall; TODO: identify</string>
+<string key="maxblobcount" name="maxblobcount">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="name" name="name">New in Titanfall; TODO: identify</string>
+<string key="instance" name="instance">New in Titanfall; TODO: identify</string>
+<string key="world_maxs" name="world_maxs">New in Titanfall; TODO: identify</string>
+<string key="mapversion" name="mapversion">New in Titanfall; TODO: identify</string>
+<string key="ClientSide" name="ClientSide">New in Titanfall; TODO: identify</string>
+<string key="musicpostfix" name="musicpostfix">New in Titanfall; TODO: identify</string>
+<string key="world_mins" name="world_mins">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: editor_drLastCameraAngle, editor_drLastCameraPos, maxblobcount, spawnclass, name, instance, world_maxs, mapversion, ClientSide, musicpostfix, world_mins
+Removed: minoccluderarea, maxoccludeearea, startdark, maxoccludeearea_x360, minoccluderarea_x360, ResponseContext, newunit, targetname, coldworld, gametitle
+TODO: identify changes
+</group>
+
+<point name="prop_physics" color="1 0 1" box="-8 -8 -8 8 8 8">
+A prop that physically simulates as a single rigid body.
+It can be constrained to other physics objects using hinges or other constraints.
+It can also be configured to break when it takes enough damage.
+Note that the health of the object will be overridden by the health inside the model, to ensure consistent health game-wide.
+If the model used by the prop is configured to be used as a prop_dynamic (i.e.
+it should not be physically simulated) then it CANNOT be used as a prop_physics.
+Upon level load it will display a warning in the console and remove itself.
+Use a prop_dynamic instead.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<model key="model" name="World Model" value="None"></model>
+<integer key="skin" name="Skin" value="0">Some models have multiple versions of their textures, called skins.
+Set this to a number other than 0 to use that skin instead of the default.</integer>
+<boolean key="disableshadows" name="Disable shadows" value="0"></boolean>
+<real key="ExplodeDamage" name="Explosion Damage" value="0">If non-zero, when this entity breaks it will create an explosion that causes the specified amount of damage.
+See also 'Explosion Radius'.</real>
+<real key="ExplodeRadius" name="Explosion Radius" value="0">If non-zero, when this entity breaks it will create an explosion with a radius of the specified amount.
+See also 'Explosion Damage'.</real>
+<performanceMode key="PerformanceMode" name="Performance Mode" value="0">Used to limit the amount of gibs produced when this entity breaks, for performance reasons.</performanceMode>
+<real key="pressuredelay" name="Pressure Delay" value="0">Delay, in seconds, after 'broken' by pressure before breaking apart (allows for sound to play before breaking apart).</real>
+<real key="fadescale" name="Fade Scale" value="1">If you specify a fade in the worldspawn, or if the engine is running under dx7, then the engine will forcibly fade out props even if fademindist/fademaxdist isn't specified.
+This scale factor gives you some control over the fade.
+Using 0 here turns off the forcible fades.
+Numbers smaller than 1 cause the prop to fade out at further distances, and greater than 1 cause it to fade out at closer distances.</real>
+<integer key="minhealthdmg" name="Min Damage to Hurt" value="0">The prop will ignore any damage events if the damage is less than this amount.</integer>
+<integer key="shadowcastdist" name="Shadow Cast Distance" value="0">Use this to override how far this object casts shadows.
+0 = default distance.</integer>
+<real key="physdamagescale" name="Physics Impact Damage Scale" value="0.1">Scales damage energy when this object is hit by a physics object.
+NOTE: 0 means this feature is disabled for backwards compatibility.
+Set to 1.0 for materials as strong as flesh, smaller numbers indicate stronger materials.</real>
+<damagetype key="Damagetype" name="Impact damage type" value="0"></damagetype>
+<boolean key="nodamageforces" name="Damaging it Doesn't Push It" value="0">Used to determine whether or not damage should cause the brush to move.</boolean>
+<real key="inertiaScale" name="Scale Factor For Inertia" value="1.0">Scales the angular mass of an object.
+Used to hack angular damage and collision response.</real>
+<real key="massScale" name="Mass Scale" value="0">A scale multiplier for the object's mass.</real>
+<integer key="damagetoenablemotion" name="Health Level to Override Motion" value="0">If specified, this object will start motion disabled.
+Once its health has dropped below this specified amount, it will enable motion.</integer>
+<real key="forcetoenablemotion" name="Physics Impact Force to Override Motion" value="0">If specified, this object will start motion disabled.
+Any impact that imparts a force greater than this value on the physbox will enable motion.</real>
+<renderfx key="renderfx" name="Render FX" value="0"></renderfx>
+<rendermode key="rendermode" name="Render Mode" value="0">Used to set a non-standard rendering mode on this entity.
+See also 'FX Amount' and 'FX Color'.</rendermode>
+<integer key="renderamt" name="FX Amount (0 - 255)" value="255">The FX amount is used by the selected Render Mode.</integer>
+<string key="rendercolor" name="FX Color (R G B)" value="255 255 255">The FX color is used by the selected Render Mode.</string>
+<boolean key="disablereceiveshadows" name="Disable Receiving Shadows" value="0"></boolean>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="drawinfastreflection" name="drawinfastreflection">New in Titanfall; TODO: identify</string>
+<string key="physicsmode" name="physicsmode">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<string key="allowfunnel" name="allowfunnel">New in Titanfall; TODO: identify</string>
+<string key="collide_ai" name="collide_ai">New in Titanfall; TODO: identify</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="collide_titan" name="collide_titan">New in Titanfall; TODO: identify</string>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<string key="luxelsize" name="luxelsize">New in Titanfall; TODO: identify</string>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="fadedist" name="fadedist">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="lightingMethod" name="lightingMethod">New in Titanfall; TODO: identify</string>
+<string key="collide_human" name="collide_human">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_2" bit="2" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_8" bit="8" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: solid, drawinfastreflection, physicsmode, disableX360, allowfunnel, collide_ai, maxgpulevel, maxcpulevel, collide_titan, mingpulevel, spawnflags, shadowdepthnocache, disableflashlight, luxelsize, mincpulevel, fadedist, disableshadowdepth, lightingMethod, collide_human, scale
+Removed: maxdxlevel, overridescript, puntsound, globalname, fademaxdist, modelscale, BreakModelMessage, fademindist, mindxlevel, damagefilter
+TODO: identify changes
+</point>
+
+<group name="trigger_out_of_bounds" color="1 0 1">
+----- KEYS -----
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</group>
+
+<point name="env_soundscape_triggerable" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that works like env_soundscape except that it works in conjunction with trigger_soundscape to determine when a player hears it.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<integer key="radius" name="Radius" value="128">If set to -1, then the player can hear the soundscape as long as he can see it (regardless of distance to it).</integer>
+<soundscape key="soundscape" name="Soundscape" value="Nothing">The name of the soundscape to use.
+Corresponds to an entry in the soundscapes*.txt file in the hl2\scripts directory.</soundscape>
+<string key="requireLOS" name="requireLOS">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: requireLOS
+Removed: position0, position2, position6, position7, position5, position1, parentname, position3, position4
+TODO: identify changes
+</point>
+
+<group name="func_breakable_surf" color="1 0 1">
+A breakable surface, for partially breakable glass / tile / etc.
+ All faces but the desired visible one must be marked as NODRAW and thatface must be 4 sided.
+ The material applied to the visible face must be set up to be breakable.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<boolean key="disableshadows" name="Disable shadows" value="0"></boolean>
+<propdata key="propdata" name="Prop Data" value="0">Set to the best approximation of the size and material of this entity's brushes.
+If set, it will override this entity's health and damage taken from various weapons.
+See the propdata.txt file in the scripts directory of your MOD to get a detailed list of what each entry specifies.</propdata>
+<integer key="health" name="Health" value="5">The amount of damage the surface takes before breaking.</integer>
+<material key="material" name="Material Type" value="0">Set to the material type of the brush.
+Used to decide what sounds to make when damaged, and what gibs to produce when broken.</material>
+<explosion key="explosion" name="Gibs Direction" value="0">Used to decide which direction to throw gibs when broken.</explosion>
+<angles key="gibdir" name="Precise Gib Direction" value="0 0 0">Specifies the direction to throw gibs when this breakable breaks.
+Be sure to select Use Precise Gib Dir in the Gibs Direction field!</angles>
+<boolean key="nodamageforces" name="Damaging it Doesn't Push It" value="0">Used to determine whether or not damage should cause the brush to move.</boolean>
+<spawnobject key="spawnobject" name="Spawn On Break" value="0">When broken, an entity of the selected type will be created.</spawnobject>
+<integer key="explodemagnitude" name="Explode Magnitude" value="0">If non-zero, when this entity breaks it will create an explosion that causes the specified amount of damage.</integer>
+<real key="pressuredelay" name="Pressure Delay" value="0">Delay, in seconds, after 'broken' by pressure before breaking apart (allows for sound to play before breaking apart).</real>
+<rendermode key="rendermode" name="Render Mode" value="0">Used to set a non-standard rendering mode on this entity.
+See also 'FX Amount' and 'FX Color'.</rendermode>
+<integer key="renderamt" name="FX Amount (0 - 255)" value="255">The FX amount is used by the selected Render Mode.</integer>
+<string key="rendercolor" name="FX Color (R G B)" value="255 255 255">The FX color is used by the selected Render Mode.</string>
+<boolean key="disablereceiveshadows" name="Disable Receiving Shadows" value="0"></boolean>
+<integer key="fragility" name="Fragility" value="100">If the 'Surface Type' is set to Glass, this value sets how fragile the glass pieces are after the surface has been broken.</integer>
+<surfacetype key="surfacetype" name="Surface Type" value="0"></surfacetype>
+<string key="upperleft" name="upperleft">New in Titanfall; TODO: identify</string>
+<string key="error" name="error">New in Titanfall; TODO: identify</string>
+<string key="lowerright" name="lowerright">New in Titanfall; TODO: identify</string>
+<string key="upperright" name="upperright">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="lowerleft" name="lowerleft">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+----- NOTES -----
+Introduced by Source
+Added: upperleft, error, lowerright, upperright, disableshadowdepth, lowerleft, spawnflags, shadowdepthnocache, disableflashlight, model
+Removed: globalname, damagefilter, gibmodel, BreakModelMessage, ExplodeDamage, ExplodeRadius, PerformanceMode, parentname, renderfx
+TODO: identify changes
+</group>
+
+<group name="func_brush" color="1 0 1">
+An brush built entity with various features.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="disableshadows" name="Disable shadows" value="0"></boolean>
+<boolean key="invert_exclusion" name="Invert NPC class exclusion" value="0">If set, then the excluded NPC class will consider this brush solid, and all other NPC classes will consider it non-solid.</boolean>
+<boolean key="solidbsp" name="Solid BSP" value="0">Set this if this brush is in heirarchy with a moving object of some kind, and the player can stand on this brush.</boolean>
+<boolean key="vrad_brush_cast_shadows" name="Shadows" value="0">Set this if this brush casts lightmap shadows.</boolean>
+<string key="solidity" name="solidity">New in Titanfall; TODO: identify</string>
+<string key="startdisabled" name="startdisabled">New in Titanfall; TODO: identify</string>
+<string key="drawinfastreflection" name="drawinfastreflection">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="model" name="World Model"></string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: solidity, startdisabled, drawinfastreflection, disableshadowdepth, spawnflags, shadowdepthnocache, disableflashlight, target, model
+Removed: disablereceiveshadows, globalname, StartDisabled, renderfx, Solidity, excludednpc, renderamt, InputFilter, rendermode, parentname, rendercolor, _minlight
+TODO: identify changes
+</group>
+
+<group name="trigger_once" color="1 0 1">
+A trigger volume that removes itself after it is triggered once.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<string key="wait" name="wait">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: spawnflags, wait, model
+Removed: filtername, globalname, parentname
+TODO: identify changes
+</group>
+
+<group name="func_breakable" color="1 0 1">
+A brush entity that can be broken from damage, or an input.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<boolean key="disableshadows" name="Disable shadows" value="0"></boolean>
+<propdata key="propdata" name="Prop Data" value="0">Set to the best approximation of the size and material of this entity's brushes.
+If set, it will override this entity's health and damage taken from various weapons.
+See the propdata.txt file in the scripts directory of your MOD to get a detailed list of what each entry specifies.</propdata>
+<integer key="health" name="Strength" value="1">Number of points of damage to take before breaking.
+0 means don't break.</integer>
+<material key="material" name="Material Type" value="0">Set to the material type of the brush.
+Used to decide what sounds to make when damaged, and what gibs to produce when broken.</material>
+<explosion key="explosion" name="Gibs Direction" value="0">Used to decide which direction to throw gibs when broken.</explosion>
+<angles key="gibdir" name="Precise Gib Direction" value="0 0 0">Specifies the direction to throw gibs when this breakable breaks.
+Be sure to select Use Precise Gib Dir in the Gibs Direction field!</angles>
+<boolean key="nodamageforces" name="Damaging it Doesn't Push It" value="0">Used to determine whether or not damage should cause the brush to move.</boolean>
+<spawnobject key="spawnobject" name="Spawn On Break" value="0">When broken, an entity of the selected type will be created.</spawnobject>
+<integer key="explodemagnitude" name="Explode Magnitude" value="0">If non-zero, when this entity breaks it will create an explosion that causes the specified amount of damage.</integer>
+<real key="pressuredelay" name="Pressure Delay" value="0">Delay, in seconds, after 'broken' by pressure before breaking apart (allows for sound to play before breaking apart).</real>
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<rendermode key="rendermode" name="Render Mode" value="0">Used to set a non-standard rendering mode on this entity.
+See also 'FX Amount' and 'FX Color'.</rendermode>
+<integer key="renderamt" name="FX Amount (0 - 255)" value="255">The FX amount is used by the selected Render Mode.</integer>
+<string key="rendercolor" name="FX Color (R G B)" value="255 255 255">The FX color is used by the selected Render Mode.</string>
+<string key="drawinfastreflection" name="drawinfastreflection">New in Titanfall; TODO: identify</string>
+<string key="disableshadowdepth" name="disableshadowdepth">New in Titanfall; TODO: identify</string>
+<string key="shadowdepthnocache" name="shadowdepthnocache">New in Titanfall; TODO: identify</string>
+<string key="disableflashlight" name="disableflashlight">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="model" name="World Model"></string>
+----- NOTES -----
+Introduced by Source
+Added: drawinfastreflection, disableshadowdepth, spawnflags, shadowdepthnocache, disableflashlight, target, model
+Removed: disablereceiveshadows, minhealthdmg, renderfx, gibmodel, globalname, BreakModelMessage, ExplodeDamage, PerformanceMode, physdamagescale, ExplodeRadius, parentname, damagefilter, _minlight
+TODO: identify changes
+</group>
+
+<point name="npc_turret_mega" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<model key="model" name="World Model"></model>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="AccuracyMultiplier" name="AccuracyMultiplier">New in Titanfall; TODO: identify</string>
+<string key="additionalequipment" name="additionalequipment">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="keyframe_rope" color="1 0 1" box="-8 -8 -8 8 8 8">
+A node entity that marks a point in a rope.
+The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="NextKey" name="Next KeyFrame" value="None">Name of the next keyframe along this keyframe path.</string>
+<integer key="MoveSpeed" name="Speed (units per second)" value="64"></integer>
+<integer key="Slack" name="Slack" value="25">How much extra length the rope has (by default it has the length between its two endpoints in the editor).</integer>
+<type key="Type" name="Type" value="0"></type>
+<integer key="Subdiv" name="Subdivision" value="2">Number of subdivisions between each rope segment.
+Maximum value is 8.
+Higher values make smoother ropes, but are slower to render.</integer>
+<boolean key="Barbed" name="Barbed" value="0">Test effect that makes the rope look sharper and more barbed.</boolean>
+<string key="TextureScale" name="Texture Scale" value="1">This changes the texture resolution.
+The default resolution is 4 pixels per inch.
+Larger values stretch the texture and smaller values scrunch it up.</string>
+<boolean key="Collide" name="Collide with world" value="0"></boolean>
+<boolean key="Dangling" name="Start Dangling" value="0">When set to Yes, the rope starts out detached from its target endpoint.</boolean>
+<boolean key="Breakable" name="Breakable" value="0">When set to yes, the rope can be detached from either endpoint when shot.</boolean>
+<string key="RopeMaterial" name="Rope Material" value="cable/cable.vmt">The material to use when rendering the rope.</string>
+<string key="maxgpulevel" name="maxgpulevel">New in Titanfall; TODO: identify</string>
+<string key="mingpulevel" name="mingpulevel">New in Titanfall; TODO: identify</string>
+<string key="maxcpulevel" name="maxcpulevel">New in Titanfall; TODO: identify</string>
+<string key="disableX360" name="disableX360">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="mincpulevel" name="mincpulevel">New in Titanfall; TODO: identify</string>
+<string key="UseWind" name="UseWind">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: maxgpulevel, mingpulevel, maxcpulevel, spawnflags, disableX360, target, mincpulevel, UseWind
+Removed: maxdxlevel, Width, mindxlevel, parentname, NoWind
+TODO: identify changes
+</point>
+</classes>

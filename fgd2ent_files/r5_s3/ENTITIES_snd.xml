@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<group name="trigger_soundscape" color="1 0 1">
+Soundscape trigger.
+It is not necessary to create outputs for this trigger.
+It automatically will trigger the soundscape referred to by its 'Soundscape' property.
+----- KEYS -----
+<string key="origin" name="Origin (X Y Z)" value="None">The position of this entity's center in the world.
+Rotating entities typically rotate around their origin.</string>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<string key="*coll24" name="*coll24">New in Titanfall; TODO: identify</string>
+<string key="*coll11" name="*coll11">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterLifeState" name="triggerFilterLifeState">New in Titanfall; TODO: identify</string>
+<string key="*coll9" name="*coll9">New in Titanfall; TODO: identify</string>
+<string key="*coll21" name="*coll21">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamNeutral" name="triggerFilterTeamNeutral">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPhaseShift" name="triggerFilterPhaseShift">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayerVehicles" name="triggerFilterPlayerVehicles">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterUseNew" name="triggerFilterUseNew">New in Titanfall; TODO: identify</string>
+<string key="*coll17" name="*coll17">New in Titanfall; TODO: identify</string>
+<string key="fade_dist" name="fade_dist">New in Titanfall; TODO: identify</string>
+<string key="floor_occlusion_incremental" name="floor_occlusion_incremental">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamIMC" name="triggerFilterTeamIMC">New in Titanfall; TODO: identify</string>
+<string key="*coll1" name="*coll1">New in Titanfall; TODO: identify</string>
+<string key="occlusion_adjustment" name="occlusion_adjustment">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpcFlip" name="triggerFilterNpcFlip">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpc" name="triggerFilterNpc">New in Titanfall; TODO: identify</string>
+<string key="*coll16" name="*coll16">New in Titanfall; TODO: identify</string>
+<string key="model" name="World Model"></string>
+<string key="play_event" name="play_event">New in Titanfall; TODO: identify</string>
+<string key="*coll19" name="*coll19">New in Titanfall; TODO: identify</string>
+<string key="*coll12" name="*coll12">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamBeast" name="triggerFilterTeamBeast">New in Titanfall; TODO: identify</string>
+<string key="*coll27" name="*coll27">New in Titanfall; TODO: identify</string>
+<string key="environment" name="environment">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpcOwnedByPlayer" name="triggerFilterNpcOwnedByPlayer">New in Titanfall; TODO: identify</string>
+<string key="*coll4" name="*coll4">New in Titanfall; TODO: identify</string>
+<string key="floor_occlusion_base" name="floor_occlusion_base">New in Titanfall; TODO: identify</string>
+<string key="priority" name="priority">New in Titanfall; TODO: identify</string>
+<string key="*coll29" name="*coll29">New in Titanfall; TODO: identify</string>
+<string key="*coll26" name="*coll26">New in Titanfall; TODO: identify</string>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="*coll6" name="*coll6">New in Titanfall; TODO: identify</string>
+<string key="*coll23" name="*coll23">New in Titanfall; TODO: identify</string>
+<string key="*coll5" name="*coll5">New in Titanfall; TODO: identify</string>
+<string key="*coll22" name="*coll22">New in Titanfall; TODO: identify</string>
+<string key="*coll15" name="*coll15">New in Titanfall; TODO: identify</string>
+<string key="*coll31" name="*coll31">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="*coll28" name="*coll28">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayerDecoys" name="triggerFilterPlayerDecoys">New in Titanfall; TODO: identify</string>
+<string key="*coll0" name="*coll0">New in Titanfall; TODO: identify</string>
+<string key="*coll13" name="*coll13">New in Titanfall; TODO: identify</string>
+<string key="*coll30" name="*coll30">New in Titanfall; TODO: identify</string>
+<string key="*coll18" name="*coll18">New in Titanfall; TODO: identify</string>
+<string key="*coll8" name="*coll8">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamOther" name="triggerFilterTeamOther">New in Titanfall; TODO: identify</string>
+<string key="*coll10" name="*coll10">New in Titanfall; TODO: identify</string>
+<string key="*coll14" name="*coll14">New in Titanfall; TODO: identify</string>
+<string key="*coll20" name="*coll20">New in Titanfall; TODO: identify</string>
+<string key="*coll2" name="*coll2">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNonCharacter" name="triggerFilterNonCharacter">New in Titanfall; TODO: identify</string>
+<string key="*coll25" name="*coll25">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayer" name="triggerFilterPlayer">New in Titanfall; TODO: identify</string>
+<string key="*coll3" name="*coll3">New in Titanfall; TODO: identify</string>
+<string key="*coll7" name="*coll7">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamMilitia" name="triggerFilterTeamMilitia">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_12" bit="12" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: *coll24, *coll11, triggerFilterLifeState, *coll9, *coll21, triggerFilterTeamNeutral, triggerFilterPhaseShift, triggerFilterPlayerVehicles, triggerFilterUseNew, *coll17, fade_dist, floor_occlusion_incremental, triggerFilterTeamIMC, *coll1, occlusion_adjustment, triggerFilterNpcFlip, triggerFilterNpc, *coll16, model, play_event, spawnflags, *coll19, *coll12, triggerFilterTeamBeast, *coll27, environment, triggerFilterNpcOwnedByPlayer, *coll4, floor_occlusion_base, priority, *coll29, *coll26, parentBrushModel, *coll6, *coll23, *coll5, *coll22, *coll15, *coll31, link_guid, *coll28, triggerFilterPlayerDecoys, *coll0, *coll13, *coll30, *coll18, *coll8, triggerFilterTeamOther, *coll10, *coll14, *coll20, *coll2, triggerFilterNonCharacter, *coll25, triggerFilterPlayer, *coll3, *coll7, triggerFilterTeamMilitia, link_to_guid_0
+Removed: soundscape, globalname, parentname, filtername, targetname
+TODO: identify changes
+</group>
+
+<point name="ambient_generic" color="1 0 1" box="-8 -8 -8 8 8 8">
+Universal ambient sound.
+Use it to play and control a single sound.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="radius" name="Max Audible Distance" value="1250">Maximum distance at which this sound is audible.</string>
+<string key="polyline_segment_22" name="polyline_segment_22">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_109" name="polyline_segment_109">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_2" name="polyline_segment_2">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_96" name="polyline_segment_96">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_112" name="polyline_segment_112">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_35" name="polyline_segment_35">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_65" name="polyline_segment_65">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_80" name="polyline_segment_80">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_14" name="polyline_segment_14">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="polyline_segment_43" name="polyline_segment_43">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_16" name="polyline_segment_16">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_110" name="polyline_segment_110">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_75" name="polyline_segment_75">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_27" name="polyline_segment_27">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_17" name="polyline_segment_17">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_70" name="polyline_segment_70">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_56" name="polyline_segment_56">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_117" name="polyline_segment_117">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_118" name="polyline_segment_118">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_19" name="polyline_segment_19">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_29" name="polyline_segment_29">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_107" name="polyline_segment_107">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_106" name="polyline_segment_106">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_25" name="polyline_segment_25">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_84" name="polyline_segment_84">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_102" name="polyline_segment_102">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_53" name="polyline_segment_53">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_69" name="polyline_segment_69">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_21" name="polyline_segment_21">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_94" name="polyline_segment_94">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_114" name="polyline_segment_114">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_3" name="polyline_segment_3">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_28" name="polyline_segment_28">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_42" name="polyline_segment_42">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_104" name="polyline_segment_104">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_72" name="polyline_segment_72">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_87" name="polyline_segment_87">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_48" name="polyline_segment_48">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_44" name="polyline_segment_44">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_60" name="polyline_segment_60">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_54" name="polyline_segment_54">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_66" name="polyline_segment_66">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_89" name="polyline_segment_89">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_85" name="polyline_segment_85">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_26" name="polyline_segment_26">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_4" name="polyline_segment_4">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_61" name="polyline_segment_61">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_77" name="polyline_segment_77">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_111" name="polyline_segment_111">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_10" name="polyline_segment_10">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_99" name="polyline_segment_99">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_36" name="polyline_segment_36">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_74" name="polyline_segment_74">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_34" name="polyline_segment_34">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_95" name="polyline_segment_95">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_57" name="polyline_segment_57">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_50" name="polyline_segment_50">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_51" name="polyline_segment_51">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_79" name="polyline_segment_79">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_122" name="polyline_segment_122">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_108" name="polyline_segment_108">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_41" name="polyline_segment_41">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_0" name="polyline_segment_0">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_11" name="polyline_segment_11">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_82" name="polyline_segment_82">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_1" name="polyline_segment_1">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_67" name="polyline_segment_67">New in Titanfall; TODO: identify</string>
+<string key="soundName" name="soundName">New in Titanfall; TODO: identify</string>
+<string key="occlusion_adjustment" name="occlusion_adjustment">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_115" name="polyline_segment_115">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_32" name="polyline_segment_32">New in Titanfall; TODO: identify</string>
+<string key="enabled" name="enabled">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_30" name="polyline_segment_30">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_12" name="polyline_segment_12">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_103" name="polyline_segment_103">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_119" name="polyline_segment_119">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_73" name="polyline_segment_73">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_13" name="polyline_segment_13">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_63" name="polyline_segment_63">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_37" name="polyline_segment_37">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_86" name="polyline_segment_86">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_31" name="polyline_segment_31">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_5" name="polyline_segment_5">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_59" name="polyline_segment_59">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_97" name="polyline_segment_97">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_68" name="polyline_segment_68">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_62" name="polyline_segment_62">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_121" name="polyline_segment_121">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_8" name="polyline_segment_8">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_39" name="polyline_segment_39">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_120" name="polyline_segment_120">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_9" name="polyline_segment_9">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_76" name="polyline_segment_76">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_93" name="polyline_segment_93">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_101" name="polyline_segment_101">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_49" name="polyline_segment_49">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_7" name="polyline_segment_7">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_90" name="polyline_segment_90">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_52" name="polyline_segment_52">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_45" name="polyline_segment_45">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_33" name="polyline_segment_33">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_55" name="polyline_segment_55">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_6" name="polyline_segment_6">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_81" name="polyline_segment_81">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_83" name="polyline_segment_83">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_64" name="polyline_segment_64">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_116" name="polyline_segment_116">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_92" name="polyline_segment_92">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_105" name="polyline_segment_105">New in Titanfall; TODO: identify</string>
+<string key="environment" name="environment">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_58" name="polyline_segment_58">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_88" name="polyline_segment_88">New in Titanfall; TODO: identify</string>
+<string key="solid" name="solid">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_100" name="polyline_segment_100">New in Titanfall; TODO: identify</string>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_91" name="polyline_segment_91">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_20" name="polyline_segment_20">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_38" name="polyline_segment_38">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_113" name="polyline_segment_113">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_18" name="polyline_segment_18">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_24" name="polyline_segment_24">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_46" name="polyline_segment_46">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_78" name="polyline_segment_78">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_23" name="polyline_segment_23">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_15" name="polyline_segment_15">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_40" name="polyline_segment_40">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_71" name="polyline_segment_71">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_98" name="polyline_segment_98">New in Titanfall; TODO: identify</string>
+<string key="polyline_segment_47" name="polyline_segment_47">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_PLAY_EVERYWHERE" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_START_SILENT" bit="4" value="1">TODO: get description from VDC</flag>
+<flag name="FLAG_IS_NOT_LOOPED" bit="5" value="1">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: polyline_segment_22, polyline_segment_109, polyline_segment_2, polyline_segment_96, polyline_segment_112, polyline_segment_35, polyline_segment_65, polyline_segment_80, polyline_segment_14, model, polyline_segment_43, polyline_segment_16, polyline_segment_110, polyline_segment_75, polyline_segment_27, polyline_segment_17, polyline_segment_70, polyline_segment_56, polyline_segment_117, polyline_segment_118, polyline_segment_19, polyline_segment_29, polyline_segment_107, polyline_segment_106, polyline_segment_25, polyline_segment_84, polyline_segment_102, polyline_segment_53, polyline_segment_69, polyline_segment_21, polyline_segment_94, polyline_segment_114, polyline_segment_3, polyline_segment_28, polyline_segment_42, polyline_segment_104, polyline_segment_72, polyline_segment_87, polyline_segment_48, polyline_segment_44, polyline_segment_60, polyline_segment_54, polyline_segment_66, polyline_segment_89, polyline_segment_85, polyline_segment_26, polyline_segment_4, polyline_segment_61, polyline_segment_77, polyline_segment_111, polyline_segment_10, polyline_segment_99, polyline_segment_36, polyline_segment_74, polyline_segment_34, polyline_segment_95, polyline_segment_57, polyline_segment_50, polyline_segment_51, polyline_segment_79, polyline_segment_122, polyline_segment_108, polyline_segment_41, polyline_segment_0, polyline_segment_11, polyline_segment_82, polyline_segment_1, polyline_segment_67, soundName, occlusion_adjustment, polyline_segment_115, polyline_segment_32, enabled, polyline_segment_30, polyline_segment_12, polyline_segment_103, polyline_segment_119, polyline_segment_73, polyline_segment_13, polyline_segment_63, polyline_segment_37, polyline_segment_86, polyline_segment_31, polyline_segment_5, polyline_segment_59, polyline_segment_97, polyline_segment_68, polyline_segment_62, link_guid, polyline_segment_121, polyline_segment_8, polyline_segment_39, polyline_segment_120, polyline_segment_9, polyline_segment_76, polyline_segment_93, polyline_segment_101, polyline_segment_49, script_name, link_to_guid_0, polyline_segment_7, polyline_segment_90, polyline_segment_52, polyline_segment_45, polyline_segment_33, polyline_segment_55, polyline_segment_6, polyline_segment_81, polyline_segment_83, polyline_segment_64, polyline_segment_116, polyline_segment_92, polyline_segment_105, environment, polyline_segment_58, polyline_segment_88, solid, polyline_segment_100, parentBrushModel, polyline_segment_91, polyline_segment_20, polyline_segment_38, polyline_segment_113, polyline_segment_18, polyline_segment_24, polyline_segment_46, polyline_segment_78, polyline_segment_23, polyline_segment_15, polyline_segment_40, polyline_segment_71, polyline_segment_98, polyline_segment_47
+Removed: preset, lfomodpitch, fadeinsecs, message, cspinup, fadeoutsecs, lfotype, SourceEntityName, health, lfomodvol, spinup, spindown, volstart, pitchstart, pitch, lforate
+TODO: identify changes
+</point>
+
+<point name="soundscape_floor" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_1" name="link_to_guid_1">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+</classes>

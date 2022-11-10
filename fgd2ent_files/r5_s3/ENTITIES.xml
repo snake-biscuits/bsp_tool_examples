@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="info_intermission" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that defines an intermission spot where dead players will float until they respawn.
+----- KEYS -----
+----- NOTES -----
+Introduced by Source
+Removed: target
+TODO: identify changes
+</point>
+
+<point name="info_lightprobe" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="env_exposure" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="auto_speed" name="auto_speed">New in Titanfall; TODO: identify</string>
+<string key="auto_compensation" name="auto_compensation">New in Titanfall; TODO: identify</string>
+<string key="auto_min" name="auto_min">New in Titanfall; TODO: identify</string>
+<string key="auto_force_value" name="auto_force_value">New in Titanfall; TODO: identify</string>
+<string key="auto_max" name="auto_max">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<group name="worldspawn" color="1 0 1">
+This is the world entity.
+Each map can only contain one, and it's automatically created for you.
+----- KEYS -----
+<string key="musicpostfix" name="musicpostfix">New in Titanfall; TODO: identify</string>
+<string key="world_maxs" name="world_maxs">New in Titanfall; TODO: identify</string>
+<string key="lightprobe_voronoi_leafsize" name="lightprobe_voronoi_leafsize">New in Titanfall; TODO: identify</string>
+<string key="world_mins" name="world_mins">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="name" name="name">New in Titanfall; TODO: identify</string>
+<string key="mapversion" name="mapversion">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: musicpostfix, world_maxs, lightprobe_voronoi_leafsize, world_mins, spawnclass, name, mapversion
+Removed: chaptertitle, coldworld, ResponseContext, message, maxpropscreenwidth, maxoccludeearea, targetname, minpropscreenwidth, startdark, detailmaterial, newunit, detailvbsp, minoccluderarea_x360, gametitle, skyname, maxoccludeearea_x360, minoccluderarea
+TODO: identify changes
+</group>
+
+<group name="trigger_indoor_area" color="1 0 1">
+----- KEYS -----
+<string key="triggerFilterLifeState" name="triggerFilterLifeState">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamNeutral" name="triggerFilterTeamNeutral">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPhaseShift" name="triggerFilterPhaseShift">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayerVehicles" name="triggerFilterPlayerVehicles">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterUseNew" name="triggerFilterUseNew">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamIMC" name="triggerFilterTeamIMC">New in Titanfall; TODO: identify</string>
+<string key="*coll1" name="*coll1">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpcFlip" name="triggerFilterNpcFlip">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpc" name="triggerFilterNpc">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamBeast" name="triggerFilterTeamBeast">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNpcOwnedByPlayer" name="triggerFilterNpcOwnedByPlayer">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayerDecoys" name="triggerFilterPlayerDecoys">New in Titanfall; TODO: identify</string>
+<string key="*coll0" name="*coll0">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="triggerFilterTeamOther" name="triggerFilterTeamOther">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterNonCharacter" name="triggerFilterNonCharacter">New in Titanfall; TODO: identify</string>
+<string key="*coll2" name="*coll2">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterPlayer" name="triggerFilterPlayer">New in Titanfall; TODO: identify</string>
+<string key="triggerFilterTeamMilitia" name="triggerFilterTeamMilitia">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_UNKNOWN_1" bit="1" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Titanfall
+</group>
+
+<group name="envmap_volume" color="1 0 1">
+----- KEYS -----
+<string key="*coll24" name="*coll24">New in Titanfall; TODO: identify</string>
+<string key="*coll11" name="*coll11">New in Titanfall; TODO: identify</string>
+<string key="*coll39" name="*coll39">New in Titanfall; TODO: identify</string>
+<string key="*coll9" name="*coll9">New in Titanfall; TODO: identify</string>
+<string key="*coll21" name="*coll21">New in Titanfall; TODO: identify</string>
+<string key="maxs" name="maxs">New in Titanfall; TODO: identify</string>
+<targetname key="target" name="target">New in Titanfall; TODO: identify</targetname>
+<string key="*coll17" name="*coll17">New in Titanfall; TODO: identify</string>
+<string key="*coll43" name="*coll43">New in Titanfall; TODO: identify</string>
+<string key="cubemapID" name="cubemapID">New in Titanfall; TODO: identify</string>
+<string key="*coll44" name="*coll44">New in Titanfall; TODO: identify</string>
+<string key="*coll1" name="*coll1">New in Titanfall; TODO: identify</string>
+<string key="mins" name="mins">New in Titanfall; TODO: identify</string>
+<string key="*coll41" name="*coll41">New in Titanfall; TODO: identify</string>
+<string key="*coll37" name="*coll37">New in Titanfall; TODO: identify</string>
+<targetname key="target_noRename" name="target_noRename">New in Titanfall; TODO: identify</targetname>
+<string key="*coll16" name="*coll16">New in Titanfall; TODO: identify</string>
+<string key="*coll40" name="*coll40">New in Titanfall; TODO: identify</string>
+<string key="*coll45" name="*coll45">New in Titanfall; TODO: identify</string>
+<string key="*coll19" name="*coll19">New in Titanfall; TODO: identify</string>
+<string key="*coll12" name="*coll12">New in Titanfall; TODO: identify</string>
+<string key="cubeMapIndex" name="cubeMapIndex">New in Titanfall; TODO: identify</string>
+<string key="*coll27" name="*coll27">New in Titanfall; TODO: identify</string>
+<string key="*coll35" name="*coll35">New in Titanfall; TODO: identify</string>
+<string key="*coll38" name="*coll38">New in Titanfall; TODO: identify</string>
+<string key="*coll4" name="*coll4">New in Titanfall; TODO: identify</string>
+<string key="priority" name="priority">New in Titanfall; TODO: identify</string>
+<string key="*coll29" name="*coll29">New in Titanfall; TODO: identify</string>
+<string key="*coll42" name="*coll42">New in Titanfall; TODO: identify</string>
+<string key="*coll26" name="*coll26">New in Titanfall; TODO: identify</string>
+<string key="*coll32" name="*coll32">New in Titanfall; TODO: identify</string>
+<string key="*coll6" name="*coll6">New in Titanfall; TODO: identify</string>
+<string key="*coll23" name="*coll23">New in Titanfall; TODO: identify</string>
+<string key="*coll5" name="*coll5">New in Titanfall; TODO: identify</string>
+<string key="*coll22" name="*coll22">New in Titanfall; TODO: identify</string>
+<string key="*coll46" name="*coll46">New in Titanfall; TODO: identify</string>
+<string key="*coll15" name="*coll15">New in Titanfall; TODO: identify</string>
+<string key="*coll31" name="*coll31">New in Titanfall; TODO: identify</string>
+<string key="*coll28" name="*coll28">New in Titanfall; TODO: identify</string>
+<string key="*coll0" name="*coll0">New in Titanfall; TODO: identify</string>
+<string key="*coll47" name="*coll47">New in Titanfall; TODO: identify</string>
+<string key="*coll34" name="*coll34">New in Titanfall; TODO: identify</string>
+<string key="*coll13" name="*coll13">New in Titanfall; TODO: identify</string>
+<string key="*coll30" name="*coll30">New in Titanfall; TODO: identify</string>
+<string key="*coll18" name="*coll18">New in Titanfall; TODO: identify</string>
+<string key="*coll8" name="*coll8">New in Titanfall; TODO: identify</string>
+<string key="*coll10" name="*coll10">New in Titanfall; TODO: identify</string>
+<string key="*coll14" name="*coll14">New in Titanfall; TODO: identify</string>
+<string key="*coll20" name="*coll20">New in Titanfall; TODO: identify</string>
+<string key="*coll2" name="*coll2">New in Titanfall; TODO: identify</string>
+<string key="*coll25" name="*coll25">New in Titanfall; TODO: identify</string>
+<string key="*coll36" name="*coll36">New in Titanfall; TODO: identify</string>
+<string key="*coll3" name="*coll3">New in Titanfall; TODO: identify</string>
+<string key="*coll7" name="*coll7">New in Titanfall; TODO: identify</string>
+<string key="*coll33" name="*coll33">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</group>
+
+<point name="func_window_hint" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="right" name="right">New in Titanfall; TODO: identify</string>
+<string key="halfheight" name="halfheight">New in Titanfall; TODO: identify</string>
+<string key="halfwidth" name="halfwidth">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+</classes>

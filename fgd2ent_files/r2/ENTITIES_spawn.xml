@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="info_spawnpoint_titan" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="squadName" name="squadName">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="phase_8" name="phase_8">New in Titanfall; TODO: identify</string>
+<string key="phase_4" name="phase_4">New in Titanfall; TODO: identify</string>
+<string key="gamemode_sur" name="gamemode_sur">New in Titanfall; TODO: identify</string>
+<string key="phase_2" name="phase_2">New in Titanfall; TODO: identify</string>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="phase_6" name="phase_6">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="phase_9" name="phase_9">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="phase_1" name="phase_1">New in Titanfall; TODO: identify</string>
+<string key="phase_5" name="phase_5">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="phase_3" name="phase_3">New in Titanfall; TODO: identify</string>
+<string key="phase_7" name="phase_7">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+<string key="radius" name="radius">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_frontline" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="group" name="group">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="script_goal_height" name="script_goal_height">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="script_goal_radius" name="script_goal_radius">New in Titanfall; TODO: identify</string>
+<string key="spectrepoint" name="spectrepoint">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_droppod" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="gamemode_exfil" name="gamemode_exfil">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_bb" name="gamemode_bb">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+<string key="radius" name="radius">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_dropship" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_human" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="phase_8" name="phase_8">New in Titanfall; TODO: identify</string>
+<string key="pushHardpointGroup" name="pushHardpointGroup">New in Titanfall; TODO: identify</string>
+<string key="phase_4" name="phase_4">New in Titanfall; TODO: identify</string>
+<string key="gamemode_sur" name="gamemode_sur">New in Titanfall; TODO: identify</string>
+<string key="phase_2" name="phase_2">New in Titanfall; TODO: identify</string>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="phase_6" name="phase_6">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="phase_9" name="phase_9">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="hardpointFrontlineYaw" name="hardpointFrontlineYaw">New in Titanfall; TODO: identify</string>
+<string key="hardpointFrontlineOverride" name="hardpointFrontlineOverride">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="gamemode_ctt" name="gamemode_ctt">New in Titanfall; TODO: identify</string>
+<string key="phase_1" name="phase_1">New in Titanfall; TODO: identify</string>
+<string key="phase_5" name="phase_5">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="phase_3" name="phase_3">New in Titanfall; TODO: identify</string>
+<string key="phase_7" name="phase_7">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_marvin" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<string key="headtype" name="headtype">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<model key="model" name="World Model"></model>
+<string key="editorclass" name="editorclass">New in Titanfall; TODO: identify</string>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="bodytype" name="bodytype">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_human_start" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="phase_4" name="phase_4">New in Titanfall; TODO: identify</string>
+<string key="gamemode_sur" name="gamemode_sur">New in Titanfall; TODO: identify</string>
+<string key="phase_2" name="phase_2">New in Titanfall; TODO: identify</string>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="gamemode_exfil" name="gamemode_exfil">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="gamemode_ctt" name="gamemode_ctt">New in Titanfall; TODO: identify</string>
+<string key="gamemode_te" name="gamemode_te">New in Titanfall; TODO: identify</string>
+<string key="phase_1" name="phase_1">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="phase_3" name="phase_3">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_dropship_start" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="gamemode_exfil" name="gamemode_exfil">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_bb" name="gamemode_bb">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="gamemode_ctt" name="gamemode_ctt">New in Titanfall; TODO: identify</string>
+<string key="gamemode_te" name="gamemode_te">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_droppod_start" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<string key="gamemode_bb" name="gamemode_bb">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<string key="gamemode_exfil" name="gamemode_exfil">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="info_spawnpoint_titan_start" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="gamemode_lh" name="gamemode_lh">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+<string key="gamemode_sur" name="gamemode_sur">New in Titanfall; TODO: identify</string>
+<string key="gamemode_fw" name="gamemode_fw">New in Titanfall; TODO: identify</string>
+<string key="gamemode_exfil" name="gamemode_exfil">New in Titanfall; TODO: identify</string>
+<string key="StartDisabled" name="StartDisabled">New in Titanfall; TODO: identify</string>
+<string key="teamnumber" name="teamnumber">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="gamemode_fd" name="gamemode_fd">New in Titanfall; TODO: identify</string>
+<string key="gamemode_lts" name="gamemode_lts">New in Titanfall; TODO: identify</string>
+<string key="teamnum" name="teamnum">New in Titanfall; TODO: identify</string>
+<string key="gamemode_bb" name="gamemode_bb">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ctf" name="gamemode_ctf">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="gamemode_ctt" name="gamemode_ctt">New in Titanfall; TODO: identify</string>
+<string key="gamemode_te" name="gamemode_te">New in Titanfall; TODO: identify</string>
+<string key="gamemode_cp" name="gamemode_cp">New in Titanfall; TODO: identify</string>
+<string key="gamemode_ffa" name="gamemode_ffa">New in Titanfall; TODO: identify</string>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)">This entity's orientation in the world.
+Pitch is rotation around the Y axis, Yaw is the rotation around the Z axis, Roll is the rotation around the X axis.</angles>
+<string key="gamemode_tdm" name="gamemode_tdm">New in Titanfall; TODO: identify</string>
+<string key="gamemode_at" name="gamemode_at">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+</classes>

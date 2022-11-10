@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="sky_camera" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity used to control the 3D Skybox.
+Its origin is used to determine the 3D Skybox's position relative to the map.
+Place this entity, in the 3D Skybox, at the point where the origin of the map should be.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<integer key="scale" name="3D Skybox scale" value="16">Scale of the skybox.</integer>
+<boolean key="fogenable" name="Fog Enable" value="0"></boolean>
+<boolean key="fogblend" name="Fog Blend" value="0"></boolean>
+<boolean key="use_angles" name="Use Angles for Fog Dir" value="0"></boolean>
+<string key="fogcolor" name="Primary Fog Color" value="255 255 255"></string>
+<string key="fogcolor2" name="Secondary Fog Color" value="255 255 255"></string>
+<string key="fogdir" name="Primary Fog Dir" value="1 0 0"></string>
+<string key="fogstart" name="Fog Start" value="500.0">Distance at which the skybox fog should start.</string>
+<string key="fogend" name="Fog End" value="2000.0">Distance at which the skybox fog should be fully opaque.</string>
+<angles key="fogangles" name="fogangles">New in Titanfall; TODO: identify</angles>
+<string key="foghalfdistbottom" name="foghalfdistbottom">New in Titanfall; TODO: identify</string>
+<string key="skyscale" name="skyscale">New in Titanfall; TODO: identify</string>
+<string key="fogdensity" name="fogdensity">New in Titanfall; TODO: identify</string>
+<string key="collide_human" name="collide_human">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="collide_ai" name="collide_ai">New in Titanfall; TODO: identify</string>
+<string key="fogdistoffset" name="fogdistoffset">New in Titanfall; TODO: identify</string>
+<string key="fogztop" name="fogztop">New in Titanfall; TODO: identify</string>
+<string key="fogdircolorstrength" name="fogdircolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogdirhalfangle" name="fogdirhalfangle">New in Titanfall; TODO: identify</string>
+<string key="fogmaxdensity" name="fogmaxdensity">New in Titanfall; TODO: identify</string>
+<string key="fogcolorstrength" name="fogcolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogzbottom" name="fogzbottom">New in Titanfall; TODO: identify</string>
+<string key="fogmid" name="fogmid">New in Titanfall; TODO: identify</string>
+<string key="foghalfdisttop" name="foghalfdisttop">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="fogbottomz" name="fogbottomz">New in Titanfall; TODO: identify</string>
+<string key="fogdircolor" name="fogdircolor">New in Titanfall; TODO: identify</string>
+<string key="useworldfog" name="useworldfog">New in Titanfall; TODO: identify</string>
+<string key="fogbottomstrength" name="fogbottomstrength">New in Titanfall; TODO: identify</string>
+<string key="fogtopz" name="fogtopz">New in Titanfall; TODO: identify</string>
+<string key="fogtopstrength" name="fogtopstrength">New in Titanfall; TODO: identify</string>
+<string key="collide_bullet" name="collide_bullet">New in Titanfall; TODO: identify</string>
+<string key="collide_sight" name="collide_sight">New in Titanfall; TODO: identify</string>
+<string key="collide_titan" name="collide_titan">New in Titanfall; TODO: identify</string>
+<string key="fogmiddensity" name="fogmiddensity">New in Titanfall; TODO: identify</string>
+<model key="model" name="World Model"></model>
+----- NOTES -----
+Introduced by Source
+Added: fogangles, foghalfdistbottom, skyscale, fogdensity, collide_human, spawnclass, collide_ai, fogdistoffset, fogztop, fogdircolorstrength, fogdirhalfangle, fogmaxdensity, fogcolorstrength, fogzbottom, fogmid, foghalfdisttop, targetname, fogbottomz, fogdircolor, useworldfog, fogbottomstrength, fogtopz, fogtopstrength, collide_bullet, collide_sight, collide_titan, fogmiddensity, model
+TODO: identify changes
+</point>
+
+<point name="env_fog_controller" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that controls the fog and view distance in the map.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<boolean key="fogenable" name="Fog Enable" value="0"></boolean>
+<boolean key="fogblend" name="Fog Blend" value="0"></boolean>
+<boolean key="use_angles" name="Use Angles for Fog Dir" value="0"></boolean>
+<string key="fogcolor" name="Primary Fog Color" value="255 255 255"></string>
+<string key="fogcolor2" name="Secondary Fog Color" value="255 255 255"></string>
+<string key="fogdir" name="Primary Fog Direction" value="1 0 0"></string>
+<real key="foglerptime" name="Interpolate time" value="0"></real>
+<string key="farz" name="Far Z Clip Plane" value="-1"></string>
+<angles key="fogangles" name="fogangles">New in Titanfall; TODO: identify</angles>
+<string key="foghalfdistbottom" name="foghalfdistbottom">New in Titanfall; TODO: identify</string>
+<string key="fogdensity" name="fogdensity">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="forceontosky" name="forceontosky">New in Titanfall; TODO: identify</string>
+<string key="fogdistoffset" name="fogdistoffset">New in Titanfall; TODO: identify</string>
+<string key="fogztop" name="fogztop">New in Titanfall; TODO: identify</string>
+<string key="fogdircolorstrength" name="fogdircolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogdirhalfangle" name="fogdirhalfangle">New in Titanfall; TODO: identify</string>
+<string key="fogcolorstrength" name="fogcolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogzbottom" name="fogzbottom">New in Titanfall; TODO: identify</string>
+<string key="foghalfdisttop" name="foghalfdisttop">New in Titanfall; TODO: identify</string>
+<string key="fogdircolor" name="fogdircolor">New in Titanfall; TODO: identify</string>
+<string key="useworldfog" name="useworldfog">New in Titanfall; TODO: identify</string>
+<string key="fogtopz" name="fogtopz">New in Titanfall; TODO: identify</string>
+<string key="minfadetime" name="minfadetime">New in Titanfall; TODO: identify</string>
+<string key="fogtopstrength" name="fogtopstrength">New in Titanfall; TODO: identify</string>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: fogangles, foghalfdistbottom, fogdensity, spawnclass, forceontosky, fogdistoffset, fogztop, fogdircolorstrength, fogdirhalfangle, fogcolorstrength, fogzbottom, foghalfdisttop, spawnflags, fogdircolor, useworldfog, fogtopz, minfadetime, fogtopstrength, scale
+Removed: fogend, maxdxlevel, fogstart, mindxlevel, fogmaxdensity
+TODO: identify changes
+</point>
+</classes>

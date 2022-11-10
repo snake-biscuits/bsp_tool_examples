@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+<!-- used by light, light_spot -->
+<list name="style">
+  <item name="Normal" value="0"/>
+  <item name="Fluorescent flicker" value="10"/>
+  <item name="Slow, strong pulse" value="2"/>
+  <item name="Slow pulse, noblack" value="11"/>
+  <item name="Gentle pulse" value="5"/>
+  <item name="Flicker A" value="1"/>
+  <item name="Flicker B" value="6"/>
+  <item name="Candle A" value="3"/>
+  <item name="Candle B" value="7"/>
+  <item name="Candle C" value="8"/>
+  <item name="Fast strobe" value="4"/>
+  <item name="Slow strobe" value="9"/>
+</list>
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="stream_hint_point" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="light_environment" color="1 0 1" box="-8 -8 -8 8 8 8">
+Sets the color and angle of the light from the sun and sky.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<integer key="pitch" name="Pitch" value="0">The downward pitch of the light from the sun.
+0 is horizontal, -90 is straight down.</integer>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<string key="_ambient" name="Ambient" value="255 255 255 20"></string>
+<real key="SunSpreadAngle" name="SunSpreadAngle" value="0">The angular extent of the sun for casting soft shadows.
+Higher numbers are more diffuse.
+5 is a good starting value.</real>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="cloudoffset" name="cloudoffset">New in Titanfall; TODO: identify</string>
+<string key="ambient_brightness" name="ambient_brightness">New in Titanfall; TODO: identify</string>
+<string key="shadows" name="shadows">New in Titanfall; TODO: identify</string>
+<string key="lightEnvironmentIndex" name="lightEnvironmentIndex">New in Titanfall; TODO: identify</string>
+<string key="ambient_color" name="ambient_color">New in Titanfall; TODO: identify</string>
+<string key="realtime_shadows" name="realtime_shadows">New in Titanfall; TODO: identify</string>
+<string key="sun_highlight_size" name="sun_highlight_size">New in Titanfall; TODO: identify</string>
+<string key="_emitter_radius" name="_emitter_radius">New in Titanfall; TODO: identify</string>
+<string key="cloudmask" name="cloudmask">New in Titanfall; TODO: identify</string>
+<string key="_specular_intensity" name="_specular_intensity">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: spawnclass, targetname, brightness, cloudoffset, ambient_brightness, shadows, lightEnvironmentIndex, ambient_color, realtime_shadows, sun_highlight_size, _emitter_radius, cloudmask, _specular_intensity, color
+Removed: _lightscaleHDR, _lightHDR, _AmbientScaleHDR, _ambientHDR
+TODO: identify changes
+</point>
+
+<point name="light_spot" color="1 0 1" box="-8 -8 -8 8 8 8">
+An invisible and directional spotlight.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<style key="style" name="Appearance" value="0"></style>
+<string key="_fifty_percent_distance" name="50 percent falloff distance" value="0">Distance at which brightness should fall off to 50%.
+If set, overrides linear constant and quadratic paramaters.</string>
+<string key="_zero_percent_distance" name="0 percent falloff distance" value="0">Distance at which brightness should fall off to negligible (1/256)%.
+Must set _fifty_percent_distance to use.</string>
+<integer key="_inner_cone" name="Inner (bright) angle" value="30"></integer>
+<integer key="_cone" name="Outer (fading) angle" value="45"></integer>
+<integer key="_exponent" name="Focus" value="1"></integer>
+<integer key="_distance" name="Maximum distance" value="0">This is the distance that light is allowed to cast, in inches.</integer>
+<string key="pitch" name="Pitch" value="-90"></string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="shadow" name="shadow">New in Titanfall; TODO: identify</string>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="script_noteworthy" name="script_noteworthy">New in Titanfall; TODO: identify</string>
+<string key="realtime_shadows" name="realtime_shadows">New in Titanfall; TODO: identify</string>
+<string key="_half_bright_fraction" name="_half_bright_fraction">New in Titanfall; TODO: identify</string>
+<string key="_emitter_radius" name="_emitter_radius">New in Titanfall; TODO: identify</string>
+<string key="_specular_intensity" name="_specular_intensity">New in Titanfall; TODO: identify</string>
+<string key="_pbr_falloff" name="_pbr_falloff">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="realtime" name="realtime">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: spawnclass, link_guid, shadow, parentBrushModel, brightness, script_noteworthy, realtime_shadows, _half_bright_fraction, _emitter_radius, _specular_intensity, _pbr_falloff, color, spawnflags, realtime
+Removed: pattern, _quadratic_attn, _lightscaleHDR, _constant_attn, target, _linear_attn, _lightHDR, _hardfalloff
+TODO: identify changes
+</point>
+
+<point name="light_probe_volume" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="*trigger_brush_1_plane_0" name="*trigger_brush_1_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_0" name="*trigger_brush_2_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_2" name="*trigger_brush_2_plane_2">New in Titanfall; TODO: identify</string>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_9" name="*trigger_brush_2_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_0" name="*trigger_brush_4_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_6" name="*trigger_brush_0_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_12" name="*trigger_brush_3_plane_12">New in Titanfall; TODO: identify</string>
+<string key="*trigger_bounds_mins" name="*trigger_bounds_mins">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_4" name="*trigger_brush_4_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_bounds_maxs" name="*trigger_bounds_maxs">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_5" name="*trigger_brush_3_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_4" name="*trigger_brush_1_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_10" name="*trigger_brush_0_plane_10">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_5" name="*trigger_brush_4_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_6" name="*trigger_brush_2_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_9" name="*trigger_brush_1_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_3" name="*trigger_brush_3_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_9" name="*trigger_brush_5_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_1" name="*trigger_brush_0_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_1" name="*trigger_brush_4_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_12" name="*trigger_brush_4_plane_12">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_13" name="*trigger_brush_0_plane_13">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_2" name="*trigger_brush_1_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_11" name="*trigger_brush_3_plane_11">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_7" name="*trigger_brush_5_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_7" name="*trigger_brush_3_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_11" name="*trigger_brush_0_plane_11">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_2" name="*trigger_brush_4_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_9" name="*trigger_brush_4_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_12" name="*trigger_brush_0_plane_12">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_2" name="*trigger_brush_3_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_1" name="*trigger_brush_1_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_10" name="*trigger_brush_4_plane_10">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_4" name="*trigger_brush_2_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_6" name="*trigger_brush_4_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_5" name="*trigger_brush_0_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_2" name="*trigger_brush_5_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_3" name="*trigger_brush_4_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_5" name="*trigger_brush_2_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_9" name="*trigger_brush_3_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_4" name="*trigger_brush_3_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_3" name="*trigger_brush_2_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_6" name="*trigger_brush_5_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_8" name="*trigger_brush_3_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_4" name="*trigger_brush_0_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_8" name="*trigger_brush_2_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_5" name="*trigger_brush_5_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_11" name="*trigger_brush_4_plane_11">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_3" name="*trigger_brush_5_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_2" name="*trigger_brush_0_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_5" name="*trigger_brush_1_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_7" name="*trigger_brush_1_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_4" name="*trigger_brush_5_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_10" name="*trigger_brush_3_plane_10">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_3" name="*trigger_brush_0_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_7" name="*trigger_brush_4_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_9" name="*trigger_brush_0_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_8" name="*trigger_brush_5_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_1" name="*trigger_brush_2_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_8" name="*trigger_brush_1_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_7" name="*trigger_brush_0_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_6" name="*trigger_brush_1_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_1" name="*trigger_brush_5_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_1" name="*trigger_brush_3_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_3" name="*trigger_brush_1_plane_3">New in Titanfall; TODO: identify</string>
+<string key="script_noteworthy" name="script_noteworthy">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_8" name="*trigger_brush_0_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_6" name="*trigger_brush_3_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_8" name="*trigger_brush_4_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_5_plane_0" name="*trigger_brush_5_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_7" name="*trigger_brush_2_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_13" name="*trigger_brush_3_plane_13">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_0" name="*trigger_brush_0_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_0" name="*trigger_brush_3_plane_0">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="color_correction" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity to control the color correction in the map.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<boolean key="StartDisabled" name="Start Disabled" value="0"></boolean>
+<real key="minfalloff" name="Lookup Falloff Start Distance" value="0.0">This is the distance to the start of the falloff region (-1 = everywhere)</real>
+<real key="maxfalloff" name="Lookup Falloff End Distance" value="200.0">This is the distance to the end of the falloff region (-1 = everywhere)</real>
+<real key="maxweight" name="Maximum Weight" value="1.0">This is the maximum weight for this lookup</real>
+<string key="filename" name="Lookup Table Filename" value="">This is the lookup table filename</string>
+<real key="fadeInDuration" name="Lookup Fade In Duration" value="0.0">Duration of fade in on when enabled.</real>
+<real key="fadeOutDuration" name="Lookup Fade out Duration" value="0.0">Dration of fade out on when disabled.</real>
+----- NOTES -----
+Introduced by Source
+Added: spawnflags
+TODO: identify changes
+</point>
+
+<point name="env_fog_controller" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity that controls the fog and view distance in the map.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<boolean key="fogenable" name="Fog Enable" value="0"></boolean>
+<boolean key="use_angles" name="Use Angles for Fog Dir" value="0"></boolean>
+<string key="fogcolor" name="Primary Fog Color" value="255 255 255"></string>
+<string key="fogdensity" name="fogdensity">New in Titanfall; TODO: identify</string>
+<string key="fogzbottom" name="fogzbottom">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="forceontosky" name="forceontosky">New in Titanfall; TODO: identify</string>
+<string key="fogdircolorstrength" name="fogdircolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogdircolor" name="fogdircolor">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="minfadetime" name="minfadetime">New in Titanfall; TODO: identify</string>
+<string key="fogztop" name="fogztop">New in Titanfall; TODO: identify</string>
+<string key="ambient_brightness" name="ambient_brightness">New in Titanfall; TODO: identify</string>
+<angles key="fogangles" name="fogangles">New in Titanfall; TODO: identify</angles>
+<real key="scale" name="scale">New in Titanfall; TODO: identify</real>
+<string key="foghalfdistbottom" name="foghalfdistbottom">New in Titanfall; TODO: identify</string>
+<string key="fogdistoffset" name="fogdistoffset">New in Titanfall; TODO: identify</string>
+<string key="foghalfdisttop" name="foghalfdisttop">New in Titanfall; TODO: identify</string>
+<string key="fogcolorstrength" name="fogcolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogdirhalfangle" name="fogdirhalfangle">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_UNKNOWN_0" bit="0" value="0">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: fogdensity, fogzbottom, spawnclass, forceontosky, fogdircolorstrength, fogdircolor, link_guid, minfadetime, fogztop, ambient_brightness, spawnflags, fogangles, scale, foghalfdistbottom, fogdistoffset, foghalfdisttop, fogcolorstrength, fogdirhalfangle
+Removed: fogcolor2, mindxlevel, fogblend, fogdir, fogstart, fogmaxdensity, foglerptime, farz, fogend, maxdxlevel
+TODO: identify changes
+</point>
+
+<point name="light_environment_volume" color="1 0 1" box="-8 -8 -8 8 8 8">
+----- KEYS -----
+<string key="*trigger_brush_1_plane_0" name="*trigger_brush_1_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_0" name="*trigger_brush_2_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_2" name="*trigger_brush_2_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_9" name="*trigger_brush_2_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_6" name="*trigger_brush_0_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_0" name="*trigger_brush_4_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_4" name="*trigger_brush_4_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_bounds_maxs" name="*trigger_bounds_maxs">New in Titanfall; TODO: identify</string>
+<string key="*trigger_bounds_mins" name="*trigger_bounds_mins">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_5" name="*trigger_brush_3_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_4" name="*trigger_brush_1_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_10" name="*trigger_brush_0_plane_10">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_5" name="*trigger_brush_4_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_6" name="*trigger_brush_2_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_9" name="*trigger_brush_1_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_3" name="*trigger_brush_3_plane_3">New in Titanfall; TODO: identify</string>
+<string key="framerate" name="framerate">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_1" name="*trigger_brush_0_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_1" name="*trigger_brush_4_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_2" name="*trigger_brush_1_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_11" name="*trigger_brush_0_plane_11">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_7" name="*trigger_brush_3_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_2" name="*trigger_brush_4_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_9" name="*trigger_brush_4_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_2" name="*trigger_brush_3_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_1" name="*trigger_brush_1_plane_1">New in Titanfall; TODO: identify</string>
+<string key="link_to_guid_0" name="link_to_guid_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_4" name="*trigger_brush_2_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_6" name="*trigger_brush_4_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_5" name="*trigger_brush_0_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_3" name="*trigger_brush_4_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_5" name="*trigger_brush_2_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_9" name="*trigger_brush_3_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_4" name="*trigger_brush_3_plane_4">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_3" name="*trigger_brush_2_plane_3">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_8" name="*trigger_brush_3_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_8" name="*trigger_brush_2_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_4" name="*trigger_brush_0_plane_4">New in Titanfall; TODO: identify</string>
+<string key="lightEnvironmentIndex" name="lightEnvironmentIndex">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_2" name="*trigger_brush_0_plane_2">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_5" name="*trigger_brush_1_plane_5">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_7" name="*trigger_brush_1_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_3" name="*trigger_brush_0_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_9" name="*trigger_brush_0_plane_9">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_8" name="*trigger_brush_1_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_7" name="*trigger_brush_4_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_1" name="*trigger_brush_2_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_7" name="*trigger_brush_0_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_6" name="*trigger_brush_1_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_1" name="*trigger_brush_3_plane_1">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_1_plane_3" name="*trigger_brush_1_plane_3">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_8" name="*trigger_brush_0_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_6" name="*trigger_brush_3_plane_6">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_4_plane_8" name="*trigger_brush_4_plane_8">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_2_plane_7" name="*trigger_brush_2_plane_7">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_0_plane_0" name="*trigger_brush_0_plane_0">New in Titanfall; TODO: identify</string>
+<string key="*trigger_brush_3_plane_0" name="*trigger_brush_3_plane_0">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Titanfall
+</point>
+
+<point name="light" color="1 0 1" box="-8 -8 -8 8 8 8">
+An invisible omnidirectional lightsource.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="_light" name="Brightness" value="255 255 255 200"></string>
+<string key="_lightHDR" name="BrightnessHDR" value="-1 -1 -1 1"></string>
+<real key="_lightscaleHDR" name="BrightnessScaleHDR" value="1">Amount to scale the light by when compiling for HDR.</real>
+<style key="style" name="Appearance" value="0"></style>
+<string key="_fifty_percent_distance" name="50 percent falloff distance" value="0">Distance at which brightness should fall off to 50%.
+If set, overrides linear constant and quadratic paramaters.</string>
+<string key="_zero_percent_distance" name="0 percent falloff distance" value="0">Distance at which brightness should fall off to negligible (1/256)%.
+Must set _fifty_percent_distance to use.</string>
+<integer key="_distance" name="Maximum Distance" value="0">This is the distance that light is allowed to cast, in inches.</integer>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="shadow" name="shadow">New in Titanfall; TODO: identify</string>
+<string key="_cone" name="_cone">New in Titanfall; TODO: identify</string>
+<string key="parentBrushModel" name="parentBrushModel">New in Titanfall; TODO: identify</string>
+<string key="brightness" name="brightness">New in Titanfall; TODO: identify</string>
+<string key="_inner_cone" name="_inner_cone">New in Titanfall; TODO: identify</string>
+<string key="script_noteworthy" name="script_noteworthy">New in Titanfall; TODO: identify</string>
+<string key="realtime_shadows" name="realtime_shadows">New in Titanfall; TODO: identify</string>
+<string key="_half_bright_fraction" name="_half_bright_fraction">New in Titanfall; TODO: identify</string>
+<string key="_emitter_radius" name="_emitter_radius">New in Titanfall; TODO: identify</string>
+<string key="_specular_intensity" name="_specular_intensity">New in Titanfall; TODO: identify</string>
+<string key=".50" name=".50">New in Titanfall; TODO: identify</string>
+<string key="_pbr_falloff" name="_pbr_falloff">New in Titanfall; TODO: identify</string>
+<string key="color" name="color">New in Titanfall; TODO: identify</string>
+<string key="realtime" name="realtime">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: spawnclass, link_guid, shadow, _cone, parentBrushModel, brightness, _inner_cone, script_noteworthy, realtime_shadows, _half_bright_fraction, _emitter_radius, _specular_intensity, .50, _pbr_falloff, color, spawnflags, realtime
+Removed: _constant_attn, pattern, target, _linear_attn, _hardfalloff, _quadratic_attn
+TODO: identify changes
+</point>
+
+<point name="sky_camera" color="1 0 1" box="-8 -8 -8 8 8 8">
+An entity used to control the 3D Skybox.
+Its origin is used to determine the 3D Skybox's position relative to the map.
+Place this entity, in the 3D Skybox, at the point where the origin of the map should be.
+----- KEYS -----
+<angles key="angles" name="Pitch Yaw Roll (Y Z X)" value="0 0 0">This entity's orientation in the world.
+Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.</angles>
+<integer key="scale" name="3D Skybox scale" value="16">Scale of the skybox.</integer>
+<boolean key="fogenable" name="Fog Enable" value="0"></boolean>
+<boolean key="use_angles" name="Use Angles for Fog Dir" value="0"></boolean>
+<string key="fogcolor" name="Primary Fog Color" value="255 255 255"></string>
+<string key="fogstart" name="Fog Start" value="500.0">Distance at which the skybox fog should start.</string>
+<string key="fogend" name="Fog End" value="2000.0">Distance at which the skybox fog should be fully opaque.</string>
+<model key="model" name="World Model"></model>
+<string key="fogbottomz" name="fogbottomz">New in Titanfall; TODO: identify</string>
+<string key="fogtopz" name="fogtopz">New in Titanfall; TODO: identify</string>
+<string key="collide_human" name="collide_human">New in Titanfall; TODO: identify</string>
+<string key="fogmid" name="fogmid">New in Titanfall; TODO: identify</string>
+<string key="fogdistoffset" name="fogdistoffset">New in Titanfall; TODO: identify</string>
+<targetname key="targetname" name="Name">The name that other entities refer to this entity by.</targetname>
+<string key="useworldfog" name="useworldfog">New in Titanfall; TODO: identify</string>
+<string key="fogdirhalfangle" name="fogdirhalfangle">New in Titanfall; TODO: identify</string>
+<string key="spawnclass" name="spawnclass">New in Titanfall; TODO: identify</string>
+<string key="fogdircolor" name="fogdircolor">New in Titanfall; TODO: identify</string>
+<string key="fogmaxdensity" name="fogmaxdensity">New in Titanfall; TODO: identify</string>
+<string key="fogtopstrength" name="fogtopstrength">New in Titanfall; TODO: identify</string>
+<angles key="fogangles" name="fogangles">New in Titanfall; TODO: identify</angles>
+<string key="collide_sight" name="collide_sight">New in Titanfall; TODO: identify</string>
+<string key="collide_ai" name="collide_ai">New in Titanfall; TODO: identify</string>
+<string key="fogbottomstrength" name="fogbottomstrength">New in Titanfall; TODO: identify</string>
+<string key="fogdircolorstrength" name="fogdircolorstrength">New in Titanfall; TODO: identify</string>
+<string key="link_guid" name="link_guid">New in Titanfall; TODO: identify</string>
+<string key="skyscale" name="skyscale">New in Titanfall; TODO: identify</string>
+<string key="foghalfdistbottom" name="foghalfdistbottom">New in Titanfall; TODO: identify</string>
+<string key="foghalfdisttop" name="foghalfdisttop">New in Titanfall; TODO: identify</string>
+<string key="script_name" name="script_name">New in Titanfall; TODO: identify</string>
+<string key="fogcolorstrength" name="fogcolorstrength">New in Titanfall; TODO: identify</string>
+<string key="fogmiddensity" name="fogmiddensity">New in Titanfall; TODO: identify</string>
+<string key="fogdensity" name="fogdensity">New in Titanfall; TODO: identify</string>
+<string key="fogzbottom" name="fogzbottom">New in Titanfall; TODO: identify</string>
+<string key="fogztop" name="fogztop">New in Titanfall; TODO: identify</string>
+<string key="collide_titan" name="collide_titan">New in Titanfall; TODO: identify</string>
+<string key="collide_bullet" name="collide_bullet">New in Titanfall; TODO: identify</string>
+----- NOTES -----
+Introduced by Source
+Added: model, fogbottomz, fogtopz, collide_human, fogmid, fogdistoffset, targetname, useworldfog, fogdirhalfangle, spawnclass, fogdircolor, fogmaxdensity, fogtopstrength, fogangles, collide_sight, collide_ai, fogbottomstrength, fogdircolorstrength, link_guid, skyscale, foghalfdistbottom, foghalfdisttop, script_name, fogcolorstrength, fogmiddensity, fogdensity, fogzbottom, fogztop, collide_titan, collide_bullet
+Removed: fogcolor2, fogdir, fogblend
+TODO: identify changes
+</point>
+</classes>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+    Titanfall 2 entity definitions for MRVN-radiant
+        Spawnpoint, hardpoint, ctf flag & zipline definitions by catornot (2022-11-2)
+        Bounding Boxes and Models by snake-biscuits (2022-11-6)
+        All other defintions by snake-biscuits (2022 November) [generated w/ bsp_tool_examples]
+-->
+<!-- TODO:
+    Identify broken / unused / unimplemented keys
+    Test if Titanfall can handle missing entity keys (some scripts might complain)
+-->
+<classes>
+<!--
+=============================================================================
+ OPTION KEY TYPES
+=============================================================================
+-->
+
+
+<!--
+=============================================================================
+ ENTITIES IN ALPHABETICAL ORDER
+=============================================================================
+-->
+<point name="ambient_generic" color="1 0 1" box="-8 -8 -8 8 8 8">
+Universal ambient sound.
+Use it to play and control a single sound.
+----- KEYS -----
+<targetname key="targetname" name="Name" value="None">The name that other entities refer to this entity by.</targetname>
+<string key="soundName" name="soundName">New in Titanfall; TODO: identify</string>
+<string key="soundscape" name="soundscape">New in Titanfall; TODO: identify</string>
+----- SPAWNFLAGS -----
+<flag name="FLAG_PLAY_EVERYWHERE" bit="0" value="0">TODO: get description from VDC</flag>
+<flag name="FLAG_START_SILENT" bit="4" value="1">TODO: get description from VDC</flag>
+<flag name="FLAG_IS_NOT_LOOPED" bit="5" value="1">TODO: get description from VDC</flag>
+----- NOTES -----
+Introduced by Source
+Added: soundName, soundscape
+Removed: fadeoutsecs, radius, spindown, preset, spinup, lfomodvol, fadeinsecs, lfomodpitch, pitchstart, lfotype, message, pitch, volstart, SourceEntityName, health, lforate, cspinup
+TODO: identify changes
+</point>
+</classes>

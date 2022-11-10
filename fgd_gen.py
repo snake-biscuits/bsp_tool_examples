@@ -51,6 +51,8 @@ def infer_types(ent_dump_folder: str) -> Dict[str, Dict[str, set]]:  # point at 
     # classname is always :str
     # targetname is always :str
     # parent is always :str
+    # TODO: editorclass
+    # TODO: ignore origin & angles
     all_entries = dict()
     for map_folder in os.listdir(ent_dump_folder):
         map_folder = os.path.join(ent_dump_folder, map_folder)
