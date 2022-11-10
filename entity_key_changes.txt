@@ -1,0 +1,303 @@
+*** ENTITIES ***
+color_correction:
+Inherited from Source
+New: ambient_brightness, ambient_color, brightness, color
+
+env_dropzone:
+New in Titanfall
+Keys: origin, radius, refuel, targetname, teamnum
+
+env_soundscape_triggerable:
+Inherited from Source
+New: requireLOS
+Removed: parentname, position0, position1, position2, position3, position4, position5, position6, position7
+
+env_tonemap_controller:
+Inherited from Source
+
+env_wind:
+Inherited from Source
+New: scale
+
+func_breakable:
+Inherited from Source
+New: disableflashlight, disableshadowdepth, drawinfastreflection, shadowdepthnocache, target
+Removed: BreakModelMessage, ExplodeDamage, ExplodeRadius, PerformanceMode, _minlight, damagefilter, disablereceiveshadows, gibmodel, globalname, minhealthdmg, parentname, physdamagescale, renderfx
+
+func_breakable_surf:
+Inherited from Source
+New: disableflashlight, disableshadowdepth, error, lowerleft, lowerright, origin, shadowdepthnocache, upperleft, upperright
+Removed: BreakModelMessage, ExplodeDamage, ExplodeRadius, PerformanceMode, damagefilter, gibmodel, globalname, parentname, renderfx
+
+func_brush:
+Inherited from Source
+New: disableflashlight, disableshadowdepth, drawinfastreflection, shadowdepthnocache, solidity, startdisabled, target
+Removed: InputFilter, Solidity, StartDisabled, _minlight, disablereceiveshadows, excludednpc, globalname, parentname, renderamt, rendercolor, renderfx, rendermode
+
+func_window_hint:
+New in Titanfall
+Keys: halfheight, halfwidth, origin, right
+
+info_intermission:
+Inherited from Source
+New: targetname
+
+info_lightprobe:
+New in Titanfall
+Keys: origin, targetname
+
+info_player_start:
+Inherited from Source
+New: scale, targetname
+
+info_replacement_titan_spawn:
+New in Titanfall
+Keys: angles, model, origin, scale, targetname, teamnum
+
+info_spawnpoint_flag:
+New in Titanfall
+Keys: TeamNum, origin, targetname, teamnum
+
+info_teleport_destination:
+Inherited from Source
+New: model, scale
+Removed: parentname
+
+keyframe_rope:
+Inherited from Source
+New: UseWind, disableX360, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, origin, target
+Removed: NoWind, Width, maxdxlevel, mindxlevel, parentname
+
+light:
+Inherited from Source
+New: _cone, _half_bright_fraction, _inner_cone, brightness, color, fogdensity, realtime, realtime_shadows, shadow, spawnclass
+Removed: _constant_attn, _hardfalloff, _linear_attn, _quadratic_attn, pattern, target
+
+light_environment:
+Inherited from Source
+New: _cone, ambient_brightness, ambient_color, cloudmask, cloudoffset, color, fogcolor, shadows, spawnclass, targetname
+Removed: _AmbientScaleHDR, _ambientHDR, _lightHDR, _lightscaleHDR
+
+light_spot:
+Inherited from Source
+New: _half_bright_fraction, brightness, color, fogdircolorstrength, realtime, realtime_shadows, shadow, spawnclass
+Removed: _constant_attn, _hardfalloff, _lightHDR, _lightscaleHDR, _linear_attn, _quadratic_attn, pattern, target
+
+move_rope:
+Inherited from Source
+New: UseWind, Zipline, ZiplineAutoDetachDistance, ZiplineSagEnable, ZiplineSagHeight, disableX360, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, origin, target
+Removed: NoWind, maxdxlevel, mindxlevel, parentname
+
+npc_turret_mega:
+New in Titanfall
+Keys: AccuracyMultiplier, additionalequipment, angles, model, origin, scale, targetname
+
+phys_ragdollmagnet:
+Inherited from Source
+Removed: StartDisabled, parentname, target, targetname
+
+prop_exfil_panel:
+New in Titanfall
+Keys: DisableBoneFollowers, ExplodeDamage, ExplodeRadius, HoldAnimation, MaxAnimTime, MinAnimTime, PerformanceMode, RandomAnimation, SetBodyGroup, StartDisabled, SuppressAnimSounds, angles, disableX360, disableflashlight, disablereceiveshadows, disableshadowdepth, disableshadows, drawinfastreflection, fadedist, instamission, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, model, origin, pressuredelay, refuel, renderamt, rendercolor, renderfx, rendermode, scale, shadowdepthnocache, skin, solid, target, targetname
+
+prop_physics:
+Inherited from Source
+New: allowfunnel, collide_ai, collide_human, collide_titan, disableX360, disableflashlight, disableshadowdepth, drawinfastreflection, fadedist, lightingMethod, luxelsize, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, physicsmode, scale, shadowdepthnocache, solid
+Removed: BreakModelMessage, damagefilter, fademaxdist, fademindist, globalname, maxdxlevel, mindxlevel, modelscale, overridescript, puntsound
+
+script_marvin_job:
+New in Titanfall
+Keys: angles, job, model, origin, rendercolor, scale, targetname, tempJob
+
+trigger_capture_point:
+New in Titanfall
+Keys: StartDisabled, origin, targetname
+
+trigger_hurt:
+Inherited from Source
+New: damageSourceName
+Removed: damagetype, filtername, globalname, master, parentname
+
+trigger_indoor_area:
+New in Titanfall
+Keys: StartDisabled, origin, targetname
+
+trigger_multiple:
+Inherited from Source
+New: scr_flagSet, target
+Removed: filtername, globalname, parentname
+
+trigger_once:
+Inherited from Source
+New: wait
+Removed: filtername, globalname, parentname
+
+trigger_out_of_bounds:
+New in Titanfall
+Keys: StartDisabled, origin, targetname
+
+trigger_soundscape:
+Inherited from Source
+New: requireLOS
+Removed: filtername, globalname, parentname
+
+water_lod_control:
+Inherited from Source
+
+worldspawn:
+Inherited from Source
+New: ClientSide, instance, mapversion, maxblobcount, musicpostfix, name, spawnclass, world_maxs, world_mins
+Removed: ResponseContext, coldworld, gametitle, maxoccludeearea, maxoccludeearea_x360, minoccluderarea, minoccluderarea_x360, newunit, startdark, targetname
+
+*** ENTITIES_env ***
+env_fog_controller:
+Inherited from Source
+New: fogangles, fogcolorstrength, fogdensity, fogdircolor, fogdircolorstrength, fogdirhalfangle, fogdistoffset, foghalfdistbottom, foghalfdisttop, fogtopstrength, fogtopz, fogzbottom, fogztop, forceontosky, minfadetime, scale, spawnclass, useworldfog
+Removed: fogend, fogmaxdensity, fogstart, maxdxlevel, mindxlevel
+
+sky_camera:
+Inherited from Source
+New: collide_ai, collide_bullet, collide_human, collide_sight, collide_titan, fogangles, fogbottomstrength, fogbottomz, fogcolorstrength, fogdensity, fogdircolor, fogdircolorstrength, fogdirhalfangle, fogdistoffset, foghalfdistbottom, foghalfdisttop, fogmaxdensity, fogmid, fogmiddensity, fogtopstrength, fogtopz, fogzbottom, fogztop, model, skyscale, spawnclass, targetname, useworldfog
+
+*** ENTITIES_fx ***
+beam_spotlight:
+New in Titanfall
+Keys: HDRColorScale, angles, color, disableX360, disablereceiveshadows, maxcpulevel, maxgpulevel, maxspeed, mincpulevel, mingpulevel, origin, renderamt, rendercolor, renderfx, rendermode, scale, spotlightlength, spotlightwidth, targetname
+
+env_sprite_clientside:
+New in Titanfall
+Keys: GlowProxySize, HDRColorScale, angles, disableX360, disablereceiveshadows, framerate, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, model, origin, renderamt, rendercolor, renderfx, rendermode, scale, targetname
+
+info_particle_system:
+Inherited from Source
+New: ClientSide, VisibilityFlags, editorclass, in_skybox, kill_for_replay, model, scale, solid
+Removed: cpoint1, cpoint10, cpoint11, cpoint12, cpoint13, cpoint14, cpoint15, cpoint16, cpoint17, cpoint18, cpoint19, cpoint1_parent, cpoint2, cpoint20, cpoint21, cpoint22, cpoint23, cpoint24, cpoint25, cpoint26, cpoint27, cpoint28, cpoint29, cpoint2_parent, cpoint3, cpoint30, cpoint31, cpoint32, cpoint33, cpoint34, cpoint35, cpoint36, cpoint37, cpoint38, cpoint39, cpoint3_parent, cpoint4, cpoint40, cpoint41, cpoint42, cpoint43, cpoint44, cpoint45, cpoint46, cpoint47, cpoint48, cpoint49, cpoint4_parent, cpoint5, cpoint50, cpoint51, cpoint52, cpoint53, cpoint54, cpoint55, cpoint56, cpoint57, cpoint58, cpoint59, cpoint5_parent, cpoint6, cpoint60, cpoint61, cpoint62, cpoint63, cpoint6_parent, cpoint7, cpoint7_parent, cpoint8, cpoint9, flag_as_weather, parentname
+
+info_target:
+Inherited from Source
+New: anim, editorclass, effect_name, fxgroup, in_skybox, scale, spectreSpawn, target
+Removed: parentname
+
+info_target_clientside:
+New in Titanfall
+Keys: angles, editorclass, effect_name, in_skybox, kill_for_replay, model, origin, scale, solid, start_active, targetname
+
+*** ENTITIES_script ***
+assault_assaultpoint:
+New in Titanfall
+Keys: allowdiversion, allowdiversionradius, angles, arrivaltolerance, assaulttimeout, assaulttolerance, clearoncontact, color, faceAssaultPointAngles, forcecrouch, nevertimeout, origin, scale, strict, target, targetname, urgent
+
+info_hardpoint:
+New in Titanfall
+Keys: angles, controlTarget, hardpointGroup, hardpointName, model, nearTarget, origin, scale, target, targetname, triggerTarget
+
+info_hint:
+Inherited from Source
+New: Radius, hotspot, scale
+Removed: Group, hintactivity
+
+info_node:
+Inherited from Source
+New: collide_titan, editorclass, targetname
+
+info_node_cover_crouch:
+New in Titanfall
+Keys: IgnoreFacing, MaximumState, MinimumState, TargetNode, angles, hinttype, model, nodeFOV, nodeid, origin, scale, targetname
+
+info_node_cover_left:
+New in Titanfall
+Keys: IgnoreFacing, MaximumState, MinimumState, TargetNode, angles, hinttype, model, nodeFOV, nodeid, origin, scale, targetname
+
+info_node_cover_right:
+New in Titanfall
+Keys: IgnoreFacing, MaximumState, MinimumState, TargetNode, angles, hinttype, model, nodeFOV, nodeid, origin, scale, targetname
+
+info_node_cover_stand:
+New in Titanfall
+Keys: IgnoreFacing, MaximumState, MinimumState, TargetNode, angles, hinttype, model, nodeFOV, nodeid, origin, scale, targetname
+
+info_node_safe_hint:
+New in Titanfall
+Keys: IgnoreFacing, MaximumState, MinimumState, TargetNode, hinttype, nodeFOV, nodeid, origin, radius, targetname
+
+info_target:
+Inherited from Source
+New: anim, editorclass, effect_name, fxgroup, in_skybox, scale, spectreSpawn, target
+Removed: parentname
+
+info_target_clientside:
+New in Titanfall
+Keys: angles, editorclass, effect_name, in_skybox, kill_for_replay, model, origin, scale, solid, start_active, targetname
+
+path_track:
+Inherited from Source
+New: SendSignal, WaitSignal, behavior, delete, dropoffCount, instamission, objectiveTarget
+Removed: altpath, angles, parentname
+
+prop_control_panel:
+New in Titanfall
+Keys: DisableBoneFollowers, ExplodeDamage, ExplodeRadius, HoldAnimation, MaxAnimTime, MinAnimTime, PerformanceMode, RandomAnimation, SetBodyGroup, StartDisabled, SuppressAnimSounds, angles, disableX360, disableflashlight, disablereceiveshadows, disableshadowdepth, disableshadows, drawinfastreflection, fadedist, gamemode_bb, gamemode_tdm, instamission, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, model, origin, pressuredelay, refuel, renderamt, rendercolor, renderfx, rendermode, scale, shadowdepthnocache, skin, solid, target, targetname
+
+prop_dynamic:
+Inherited from Source
+New: ClientSide, HoldAnimation, SuppressAnimSounds, collide_ai, collide_bullet, collide_human, collide_sight, collide_titan, disableX360, disableflashlight, disableshadowdepth, drawinfastreflection, effect_name, fadedist, lightingMethod, luxelsize, maxcpulevel, maxgpulevel, mincpulevel, mingpulevel, scale, screenspacefade, shadowdepthnocache, target
+Removed: BreakModelMessage, damagefilter, fademaxdist, fademindist, fadescale, globalname, maxdxlevel, mindxlevel, modelscale, parentname
+
+prop_refuel_pump:
+New in Titanfall
+Keys: angles, lightingorigin, model, origin, scale, solid, targetname
+
+script_ref:
+New in Titanfall
+Keys: angles, model, origin, scale, targetname
+
+traverse:
+New in Titanfall
+Keys: UseableBy, angles, model, origin, scale, targetname, traverseType
+
+*** ENTITIES_snd ***
+ambient_generic:
+Inherited from Source
+New: soundName, soundscape
+Removed: SourceEntityName, cspinup, fadeinsecs, fadeoutsecs, health, lfomodpitch, lfomodvol, lforate, lfotype, message, pitch, pitchstart, preset, radius, spindown, spinup, volstart
+
+*** ENTITIES_spawn ***
+info_frontline:
+New in Titanfall
+Keys: angles, gamemode_ctf, gamemode_lts, gamemode_tdm, group, origin, scale, spectrepoint, target, targetname, teamnum
+
+info_spawnpoint_droppod:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_bb, gamemode_cp, gamemode_ctf, gamemode_ctt, gamemode_exfil, gamemode_lts, gamemode_tdm, gamemode_te, model, origin, scale, targetname, teamnum
+
+info_spawnpoint_droppod_start:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_bb, gamemode_cp, gamemode_ctf, gamemode_exfil, gamemode_lts, gamemode_tdm, model, origin, scale, targetname, teamnum
+
+info_spawnpoint_dropship:
+New in Titanfall
+Keys: angles, origin, scale, targetname, teamnum
+
+info_spawnpoint_dropship_start:
+New in Titanfall
+Keys: angles, gamemode_bb, gamemode_cp, gamemode_ctf, gamemode_ctt, gamemode_exfil, gamemode_lts, gamemode_tdm, gamemode_te, model, origin, scale, targetname, teamnum
+
+info_spawnpoint_human:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_cp, gamemode_ctf, gamemode_ctt, gamemode_exfil, gamemode_lts, gamemode_tdm, model, origin, scale, spawn_outdoors, targetname, teamnum
+
+info_spawnpoint_human_start:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_bb, gamemode_cp, gamemode_ctf, gamemode_ctt, gamemode_exfil, gamemode_lts, gamemode_tdm, gamemode_te, model, origin, refuel, scale, targetname, teamnum
+
+info_spawnpoint_marvin:
+New in Titanfall
+Keys: StartDisabled, TeamNum, angles, bodytype, headtype, origin, scale, targetname
+
+info_spawnpoint_titan:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_cp, gamemode_ctf, gamemode_tdm, model, origin, scale, targetname, teamnum
+
+info_spawnpoint_titan_start:
+New in Titanfall
+Keys: StartDisabled, angles, gamemode_bb, gamemode_cp, gamemode_ctf, gamemode_ctt, gamemode_exfil, gamemode_lts, gamemode_tdm, gamemode_te, model, origin, refuel, scale, targetname, teamnum
