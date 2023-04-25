@@ -26,8 +26,8 @@ namespace bsp_tool {
             int8_t           gpu_level_min;
             int8_t           gpu_level_max;
             Colour32         diffuse_modulation;
+            float            scale;                   // generally 1.0
             bool             disable_x360;            // 4 byte bool
-            float            scale;                   // should be 1.0?
             uint16_t         collision_flags_add;     // new!
             uint16_t         collision_flags_remove;  // new!
         };
