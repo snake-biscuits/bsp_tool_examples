@@ -27,21 +27,21 @@ for md in ("E:/Mod/Titanfall/maps", "E:/Mod/TitanfallOnline/maps"):
         bsp = bsp_tool.load_bsp(os.path.join(md, map_name))
         for td in bsp.TEXTURE_DATA:
             vertex_type = (td.flags & bsp_tool.branches.respawn.titanfall.MeshFlags.MASK_VERTEX).name
-            vmt_name = bsp.TEXTURE_DATA_STRING_DATA[td.name_index]
-            vmt_path = f"{materials_dir}/{vmt_name}.vmt"
+            vmt_name = f"{bsp.TEXTURE_DATA_STRING_DATA[td.name_index]}.vmt"
+            vmt_path = os.path.join(materials_dir, vmt_name)
             if not os.path.exists(vmt_path):
                 missing[map_name[:-4]].add(f"materials/{vmt_name.lower()}")
                 continue
             # check vtfs
-            with open(mat_path, "r") as vmt_file:
+            with open(vmt_path, "r") as vmt_file:
                 for line in vmt_file:
                     for pattern in vtf_patterns:
-                    match = pattern.match(line)
-                    if match is not None:
-                        vtf_name = match.groups()[0]
-                        vtf_path = f"{materials_dir}/{vtf_name}.vmt"
-                        if not os.path.exists(vtf_path):
-                            missing[map_name[:-4]].add(f"materials/{vtf_name.lower()}")
+                        match = pattern.match(line)
+                        if match is not None:
+                            vtf_name = f"{match.groups()[0]}.vtf"
+                            vtf_path = os.path.join(materials_dir, vtf_name)
+                            if not os.path.exists(vtf_path):
+                                missing[map_name[:-4]].add(f"materials/{vtf_name.lower()}")
         if not hasattr(bsp, "GAME_LUMP"):
             continue
         for mdl_name in bsp.GAME_LUMP.sprp.model_names:
@@ -49,7 +49,6 @@ for md in ("E:/Mod/Titanfall/maps", "E:/Mod/TitanfallOnline/maps"):
             if not os.path.exists(mdl_path):
                 missing[map_name[:-4]].add(vtf_name.lower())
         # TODO: dynamic models, particles, sounds
-            
 
 
 for map_name in sorted(missing):
