@@ -1,3 +1,4 @@
+/* generated from bsp_tool w/ .as_cpp method of Struct/MappedArray */
 #include <cstdint>
 
 

@@ -1,3 +1,4 @@
+"""superceded by MRVN-Radiant/MRVN-Entities"""
 import collections
 import fnmatch
 import functools
@@ -6,7 +7,6 @@ import os
 from typing import Any, Dict, List, Set, Union
 
 import sys  # noqa
-sys.path.insert(0, "../bsp_tool")  # sneak in next door
 import bsp_tool  # noqa
 import valvefgd  # noqa
 

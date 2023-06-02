@@ -3,8 +3,8 @@ import fnmatch
 import os
 from typing import Dict
 
-from .. import load_bsp
-from ..branches.shared import Entities
+from bsp_tool import load_bsp
+from bsp_tool.branches.shared import Entities
 
 
 def read_all_bsp_ents(maps_dir: str):

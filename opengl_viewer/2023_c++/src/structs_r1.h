@@ -1,4 +1,4 @@
-// titanfall 1 bsp types
+/* titanfall 1 bsp types, extracted from .dlls by rexx */
 #include <stdbool.h>
 
 
