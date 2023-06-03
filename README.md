@@ -1,7 +1,7 @@
-# bsp_tool-examples
- Example scripts for snake-biscuits/bsp_tool
+# bsp_tool_examples
+ Example scripts for [snake-biscuits/bsp_tool](https://github.com/snake-biscuits/bsp_tool)
 
-You will need to install `bsp_tool` (version 0.1.2) to use these scripts  
+You will need to install `bsp_tool` (version 0.4.0) to use these scripts  
 To install with pip:  
 `$ pip install bsp_tool`
 
