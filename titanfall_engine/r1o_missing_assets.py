@@ -3,55 +3,33 @@ import fnmatch
 import os
 import re
 import sys
-sys.path.append("../bsp_tool")
+sys.path.append("../../bsp_tool")
 import bsp_tool  # noqa E402
+from bsp_tool.extensions.archives import respawn  # noqa E402
 
 
-# https://developer.valvesoftware.com/wiki/Category:List_of_Shader_Parameters
-# NOTE: some of the params ending in 2 are new to titanfall _bm materials
-# TODO: check to see if we missed any
-vmt_params = ("basetexture", "basetexture2", "blendmodulatetexture", "bumpmap", "bumpmap2",
-              "detail", "detail2", "detailnormal", "detailnormal2",
-              "envmapmask", "phongexponenttexture",
-              "reflectiontint", "reflectiontint2", "reflectiontintshiniess", "reflectiontintshininess2",
-              "shininess", "shininess2")
-vtf_patterns = {re.compile(f'\\s"${p}"\\s"(.*)"') for p in vmt_params}
-
-assets_dir = "E:/Mod/TitanfallOnline/TitanFallOnline/assets_dump"
-materials_dir = os.path.join(assets_dir, "materials")
+r1_vpk_dir = "D:/SteamLibrary/steamapps/common/Titanfall/vpk"
+r1o_dir = "E:/Mod/TitanfallOnline/TitanFallOnline/assets_dump"
 
 missing = defaultdict(set)
-# ^ {"mp_mapname.bsp": {"folder/asset.ext"}}
-for md in ("E:/Mod/Titanfall/maps", "E:/Mod/TitanfallOnline/maps"):
-    for map_name in fnmatch.filter(os.listdir(md), "*.bsp"):
-        bsp = bsp_tool.load_bsp(os.path.join(md, map_name))
-        for td in bsp.TEXTURE_DATA:
-            vertex_type = (td.flags & bsp_tool.branches.respawn.titanfall.MeshFlags.MASK_VERTEX).name
-            vmt_name = f"{bsp.TEXTURE_DATA_STRING_DATA[td.name_index]}.vmt"
-            vmt_path = os.path.join(materials_dir, vmt_name)
-            if not os.path.exists(vmt_path):
-                missing[map_name[:-4]].add(f"materials/{vmt_name.lower()}")
-                continue
-            # check vtfs
-            with open(vmt_path, "r") as vmt_file:
-                for line in vmt_file:
-                    for pattern in vtf_patterns:
-                        match = pattern.match(line)
-                        if match is not None:
-                            vtf_name = f"{match.groups()[0]}.vtf"
-                            vtf_path = os.path.join(materials_dir, vtf_name)
-                            if not os.path.exists(vtf_path):
-                                missing[map_name[:-4]].add(f"materials/{vtf_name.lower()}")
-        if not hasattr(bsp, "GAME_LUMP"):
+# ^ {"vpk_name": {"folder/asset.ext"}}
+for vpk_name in fnmatch.filter(os.listdir(r1_vpk_dir), "englishclient_*.pak000_dir.vpk"):
+    vpk = respawn.Vpk()
+    vpk_name_short = re.match(r"englishclient_(.*).bsp.pak000_dir.vpk").groups()[0]
+    for asset_path in vpk.namelist():
+        if asset_path.startswith("depot"):
             continue
-        for mdl_name in bsp.GAME_LUMP.sprp.model_names:
-            mdl_path = os.path.join(assets_dir, mdl_name)
-            if not os.path.exists(mdl_path):
-                missing[map_name[:-4]].add(vtf_name.lower())
-        # TODO: dynamic models, particles, sounds
+        if not os.path.exists(os.path.join(r1o_dir, asset_path)):
+            missing[vpk_name_short].add(asset_path)
 
 
-for map_name in sorted(missing):
-    print(map_name)
-    for filename in sorted(missing[map_name]):
-        print(f"  {filename}")
+# TODO: compare crcs for assets duplicated across multiple vpks
+# -- each map presumably mounts only common + their own vpk
+
+
+# TODO: generate filelists for extraction
+# -- find the least number of extractions nessecary
+for vpk_name in sorted(missing):
+    print(vpk_name)
+    for asset_path in sorted(missing[vpk_name]):
+        print(f"  {asset_path}")
