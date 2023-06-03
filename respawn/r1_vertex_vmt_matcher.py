@@ -40,6 +40,8 @@ for md in ("E:/Mod/Titanfall/maps", "E:/Mod/TitanfallOnline/maps"):
                     shader = [g for g in list(matches.difference({None}))[0].groups() if g is not None][0]
                     assert shader is not None, f"{vmt_name}: {matches}"
                     results.add((vertex_type, shader))
+                    # if shader == "Water":  # "VertexLitGeneric"
+                    #     print(f"{vertex_type:<16} {vmt_name}")
 
 
 # report
