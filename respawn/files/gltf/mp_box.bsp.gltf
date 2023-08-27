@@ -1,0 +1,62 @@
+{
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          }
+        }
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "mp_box.bsp.bin",
+      "byteLength": 3108960
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 3108960,
+      "target": 34962
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "type": "VEC3",
+      "count": 259080,
+      "min": [
+        -32768,
+        -32768,
+        -32768
+      ],
+      "max": [
+        32768,
+        32768,
+        32768
+      ]
+    }
+  ],
+  "asset": {
+    "version": "2.0"
+  }
+}
