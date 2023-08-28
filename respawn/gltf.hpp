@@ -4,6 +4,8 @@
 
 
 #define INTO(x)  reinterpret_cast<char*>(&x)
+#define MAGIC(a, b, c, d)  ((a << 0) | (b << 8) | (c << 16) | (d << 24))
+#define MAGIC_rBSP  MAGIC('r', 'B', 'S', 'P')
 
 typedef struct { uint32_t offset, length, version, fourCC; } LumpHeader;
 typedef struct { uint32_t magic, version, revision, _127; LumpHeader lumps[128]; } BspHeader;
@@ -13,14 +15,19 @@ class RespawnBsp { public:
     BspHeader      header;
     std::ifstream  file;
 
-    // TODO: verify 'rBSP' magic & 29/37 version
-
     RespawnBsp(const char* filename) {
         this->file = std::ifstream(filename, std::ios::in | std::ios::binary);
         this->file.read(INTO(this->header), sizeof(BspHeader));
     }
 
     ~RespawnBsp() {}
+
+    bool is_valid() {
+        auto valid = (this->header.magic == MAGIC_rBSP
+                   && this->header.version >= 29
+                   && this->header.version <= 37);
+        return valid;
+    }
 
     template <typename T>
     void load_lump(const int lump_index, std::vector<T> &lump_vector) {
@@ -65,17 +72,17 @@ typedef struct {  // lump 0x0E (14)
 } Model;
 
 
+typedef struct {  // lump 0x03 (3)
+    float x, y, z;
+} Vertex;
+
+
 typedef struct {  // lump 0x48 (72)
     uint32_t  position_index, normal_index;
     float     uv[2];
     uint8_t   colour[4];
     struct { float uv[2], step[2]; }  lightmap;
 } VertexLitFlat;
-
-
-typedef struct {  // lump 0x03 (3)
-    float x, y, z;
-} Vertex;
 
 
 typedef struct {  // lump 0x49 (73)
