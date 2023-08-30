@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <fstream>
+#include <cstring>
 #include <vector>
 
 
@@ -17,7 +18,15 @@ class RespawnBsp { public:
 
     RespawnBsp(const char* filename) {
         this->file = std::ifstream(filename, std::ios::in | std::ios::binary);
-        this->file.read(INTO(this->header), sizeof(BspHeader));
+        if (!this->file.fail()) {
+            this->file.read(INTO(this->header), sizeof(BspHeader));
+        } else {
+            this->header.magic    = MAGIC('B', 'A', 'D', '!');
+            this->header.version  = 0xFFFFFFFF;
+            this->header.revision = 0xFFFFFFFF;
+            this->header._127     = 0xFFFFFFFF;
+            memset(this->header.lumps, 0xFF, sizeof(LumpHeader) * 128);
+        };
     }
 
     ~RespawnBsp() {}
