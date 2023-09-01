@@ -45,6 +45,12 @@ class RespawnBsp { public:
         this->file.seekg(header.offset);
         this->file.read(INTO(lump_vector[0]), header.length);
     }
+
+    void load_lump_raw(const int lump_index, char* raw_lump) {
+        auto header = this->header.lumps[lump_index];
+        this->file.seekg(header.offset);
+        this->file.read(raw_lump, header.length);
+    }
 };
 
 
@@ -79,6 +85,12 @@ typedef struct {  // lump 0x0E (14)
     float     mins[3], maxs[3];
     uint32_t  first_mesh, num_meshes;
 } Model;
+
+
+typedef struct {  // lump 0x02 (2)
+    float     reflectivity[3];
+    uint32_t  name_index, size[2], view[2], flags;
+} TextureData;
 
 
 typedef struct {  // lump 0x03 (3)

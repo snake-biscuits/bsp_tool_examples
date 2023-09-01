@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <vector>
 
@@ -31,9 +32,24 @@ const int ARRAY_BUFFER         = 34962;
 const int ELEMENT_ARRAY_BUFFER = 34963;
 
 
-// TODO: need some struct / class to carry json metadata per mesh
-// span { start, length } -> { bufferOffset, byteLength }
-// MaterialSort.{lightmap,cubemap}_index
+typedef struct {
+    uint32_t     first_byte;
+    uint32_t     num_vertices;
+    uint32_t     lightmap_index;
+    std::string  material_name;
+} MetaGLTF;  // gltf.mesh.primitive material, lightmap & vertex range
+
+
+std::string sanitise(std::string s) {
+    // TODO: lowercase
+    size_t index = 0;
+    while ((index = s.find("\\", 0)) != std::string::npos) {
+        s.replace(index, 1, "/");
+        index += 1;
+    }
+    return s;
+}
+
 
 // TODO: lightmaps -> .png
 // NOTE: format is different between r1 & r2
@@ -58,9 +74,11 @@ int main(int argc, char* argv[]) {
         return 0;
     }
     #define GET_LUMP(T, n, i)  std::vector<T>  n;  bsp.load_lump<T>(i, n)
+    GET_LUMP(TextureData,    TEXTURE_DATA,     0x02);
     GET_LUMP(Vertex,         VERTICES,         0x03);
     GET_LUMP(Model,          MODELS,           0x0E);
     GET_LUMP(Vertex,         VERTEX_NORMALS,   0x1E);
+    GET_LUMP(uint32_t,       STRING_TABLE,     0x2C);
     GET_LUMP(uint16_t,       MESH_INDICES,     0x4F);
     GET_LUMP(Mesh,           MESHES,           0x50);
     GET_LUMP(MaterialSort,   MATERIAL_SORTS,   0x52);
@@ -69,6 +87,9 @@ int main(int argc, char* argv[]) {
     GET_LUMP(VertexLitBump,  VERTEX_LIT_BUMP,  0x49);
     GET_LUMP(VertexUnlitTS,  VERTEX_UNLIT_TS,  0x4A);
     #undef GET_LUMP
+    char* STRING_DATA;
+    STRING_DATA = static_cast<char*>(malloc(bsp.header.lumps[0x2B].length));
+    bsp.load_lump_raw(0x2B, STRING_DATA);
     bsp.file.close();
 
     // generate .bin buffer(s)
@@ -112,22 +133,21 @@ int main(int argc, char* argv[]) {
         // TODO: tangent
         vertex_buffer.emplace_back(gltf_vertex);
     }
-    unsigned int VERTEX_UNLIT_OFFSET    = 0;
-    unsigned int VERTEX_LIT_FLAT_OFFSET = VERTEX_UNLIT.size();
-    unsigned int VERTEX_LIT_BUMP_OFFSET = VERTEX_LIT_FLAT_OFFSET + VERTEX_LIT_FLAT.size();
-    unsigned int VERTEX_UNLIT_TS_OFFSET = VERTEX_LIT_BUMP_OFFSET + VERTEX_LIT_BUMP.size();
+    uint32_t VERTEX_UNLIT_OFFSET    = 0;
+    uint32_t VERTEX_LIT_FLAT_OFFSET = VERTEX_UNLIT.size();
+    uint32_t VERTEX_LIT_BUMP_OFFSET = VERTEX_LIT_FLAT_OFFSET + VERTEX_LIT_FLAT.size();
+    uint32_t VERTEX_UNLIT_TS_OFFSET = VERTEX_LIT_BUMP_OFFSET + VERTEX_LIT_BUMP.size();
 
+    // index buffer metadata
+    std::vector<MetaGLTF>  index_meta;
+    MetaGLTF  meta;
+    uint16_t  previous_material_sort = -1;
     // index buffer
     std::vector<uint32_t>  index_buffer;
     auto  worldspawn = MODELS[0];
-    // TODO: mesh.primitive group tracking
-    // -- (material, lightmap_index, first_index, num_indices)
-    // splitting worldspawn (opaque, transparent, decals, sky etc.) could be nice
-    // TODO: metadata
-    // -- worldspawn.min & max -> bufferView min & max
-    for (int j = 0; j <= static_cast<int>(worldspawn.num_meshes); j++) {
-        auto mesh = MESHES[j];
-        unsigned int  gltf_offset;
+    for (int i = 0; i <= static_cast<int>(worldspawn.num_meshes); i++) {
+        auto      mesh = MESHES[i];
+        uint32_t  gltf_offset;
         switch (mesh.flags & 0x600) {
             case MeshFlags::VERTEX_UNLIT:     gltf_offset = VERTEX_UNLIT_OFFSET;     break;
             case MeshFlags::VERTEX_LIT_FLAT:  gltf_offset = VERTEX_LIT_FLAT_OFFSET;  break;
@@ -138,14 +158,32 @@ int main(int argc, char* argv[]) {
         auto material_sort = MATERIAL_SORTS[mesh.material_sort];
         const int start = static_cast<int>(mesh.first_mesh_index);
         const int end = start + mesh.num_triangles * 3;
-        for (int k = start; k < end; k++) {
-            auto mesh_index = MESH_INDICES[k];
+        for (int j = start; j < end; j++) {
+            auto mesh_index = MESH_INDICES[j];
             index_buffer.push_back(material_sort.vertex_offset + mesh_index + gltf_offset);
         }
-        // TODO: metadata (.bsp Mesh -> .gltf mesh primitive
-        // -- match span of indices (start, length) to MaterialSort
-        // -- material, indices bufferView, bufferView min & max indices
+        // metadata
+        if (previous_material_sort == (uint16_t) -1) {
+            previous_material_sort = mesh.material_sort;
+            meta.first_byte     = 0;
+            meta.num_vertices   = 0;
+            meta.lightmap_index = material_sort.lightmap_header;
+            auto  texture_data = TEXTURE_DATA[material_sort.texture_data];
+            meta.material_name = sanitise(&STRING_DATA[STRING_TABLE[texture_data.name_index]]);
+        }
+        if (mesh.material_sort == previous_material_sort) {
+            meta.num_vertices += mesh.num_triangles * 3;
+        } else {  // changeover
+            index_meta.push_back(meta);
+            previous_material_sort = mesh.material_sort;
+            meta.num_vertices = mesh.num_triangles * 3;
+            meta.first_byte = (index_buffer.size() - meta.num_vertices) * sizeof(uint32_t);
+            meta.lightmap_index = material_sort.lightmap_header;
+            auto  texture_data = TEXTURE_DATA[material_sort.texture_data];
+            meta.material_name = sanitise(&STRING_DATA[STRING_TABLE[texture_data.name_index]]);
+        }
     }
+    index_meta.push_back(meta);
 
     // write .bin
     char           bin_filename[256];
@@ -162,27 +200,42 @@ int main(int argc, char* argv[]) {
 
     // write .gltf
     FILE* gltf_file = fopen("bsp.gltf", "w");
-    fprintf(gltf_file, "{\"scene\": 0, \"scenes\": [{\"nodes\": [0]}], \"nodes\": [{\"mesh\": 0}],\n");
-    fprintf(gltf_file, " \"meshes\": [{\"primitives\": [\n");
-    fprintf(gltf_file, "{\"attributes\": {\"POSITION\": 0, \"NORMAL\": 1, \"TEXCOORD_0\": 2, " \
-                       "\"COLOR_0\": 3, \"TEXCOORD_1\": 4, \"TEXCOORD_2\": 5}, \"indices\": 6}]}],\n");
-    // NOTE: gltf.mesh.primitive.attribute & indices index into gltf.accessors
+    #define WRITE_GLTF(...)  fprintf(gltf_file, __VA_ARGS__)
+    WRITE_GLTF("{\"scene\": 0, \"scenes\": [{\"nodes\": [0]}], \"nodes\": [{\"mesh\": 0}],\n");
     // TODO: 1 gltf.mesh per bsp.model
     // TODO: translate gltf.mesh to bsp.model origin (requires entity parsing)
     // -- could update the .json w/ bsp_tool
-    // TODO: 1 gltf.mesh.primitive per bsp.model.mesh
-    // TODO: 1 gltf.material per bsp.material_sort (unique material_name + lightmap_index)
-    fprintf(gltf_file, " \"buffers\": [\n");
-    fprintf(gltf_file, "  {\"uri\": \"bsp.vertex.bin\", \"byteLength\": %lu},\n", vertex_buffer_length);
-    fprintf(gltf_file, "  {\"uri\": \"bsp.index.bin\", \"byteLength\": %lu}],\n", index_buffer_length);
-    fprintf(gltf_file, " \"bufferViews\": [\n");
-    fprintf(gltf_file, "  {\"buffer\": 0, \"byteLength\": %lu, \"target\": %d, \"byteStride\": %lu},\n",
-                       vertex_buffer_length, ARRAY_BUFFER, sizeof(VertexGLTF));
-    fprintf(gltf_file, "  {\"buffer\": 1, \"byteLength\": %lu, \"target\": %d}],\n",
-                       index_buffer_length, ELEMENT_ARRAY_BUFFER);
+    WRITE_GLTF(" \"meshes\": [{\"primitives\": [\n");
+    #define FOREACH_META  for (unsigned long int i = 0; i < index_meta.size(); i++)
+    FOREACH_META {
+        WRITE_GLTF("  {\"attributes\": {\"POSITION\": 0, \"NORMAL\": 1, \"TEXCOORD_0\": 2, ");
+        WRITE_GLTF("\"COLOR_0\": 3, \"TEXCOORD_1\": 4, \"TEXCOORD_2\": 5}, ");
+        WRITE_GLTF("\"indices\": %lu, \"material\": %lu}", 6 + i, i);
+        if (i < index_meta.size() - 1) { WRITE_GLTF(",\n");    }
+        else                           { WRITE_GLTF("]}],\n"); }
+    }
+    WRITE_GLTF( "\"materials\": [\n");
+    FOREACH_META {
+        auto  meta = index_meta[i];
+        if (meta.lightmap_index != static_cast<uint32_t>(-1)) {
+            WRITE_GLTF("  {\"name\": \"%s.%d\"}", meta.material_name.c_str(), meta.lightmap_index);
+        } else {
+            WRITE_GLTF("  {\"name\": \"%s\"}", meta.material_name.c_str());  // unlit
+        }
+        if (i < index_meta.size() - 1) { WRITE_GLTF(",\n");  }
+        else                           { WRITE_GLTF("],\n"); }
+    }
+    WRITE_GLTF(" \"buffers\": [\n");
+    WRITE_GLTF("  {\"uri\": \"bsp.vertex.bin\", \"byteLength\": %lu},\n", vertex_buffer_length);
+    WRITE_GLTF("  {\"uri\": \"bsp.index.bin\", \"byteLength\": %lu}],\n", index_buffer_length);
+    WRITE_GLTF(" \"bufferViews\": [\n");
+    WRITE_GLTF("  {\"buffer\": 0, \"byteLength\": %lu, \"target\": %d, \"byteStride\": %lu},\n",
+               vertex_buffer_length, ARRAY_BUFFER, sizeof(VertexGLTF));
+    WRITE_GLTF("  {\"buffer\": 1, \"byteLength\": %lu, \"target\": %d}],\n",
+               index_buffer_length, ELEMENT_ARRAY_BUFFER);
     // TODO: accessor mins & maxs
-    fprintf(gltf_file, " \"accessors\": [\n");
-    #define VERTEX_ATTR(T1, T2, m)  fprintf(gltf_file, \
+    WRITE_GLTF(" \"accessors\": [\n");
+    #define VERTEX_ATTR(T1, T2, m)  WRITE_GLTF( \
         "  {\"bufferView\": 0, \"count\": %lu, \"type\": \"%s\", \"componentType\": %d, \"byteOffset\": %lu},\n", \
         vertex_buffer.size(), #T1, T2, offsetof(VertexGLTF, m))
     VERTEX_ATTR(VEC3, FLOAT,         position);
@@ -192,9 +245,16 @@ int main(int argc, char* argv[]) {
     VERTEX_ATTR(VEC2, FLOAT,         lightmap_uv);
     VERTEX_ATTR(VEC2, FLOAT,         lightmap_step);
     #undef VERTEX_ATTR
-    fprintf(gltf_file, "  {\"bufferView\": 1, \"count\": %lu, \"type\": \"SCALAR\", \"componentType\": %d}],\n",
-                       index_buffer.size(), UNSIGNED_INT);
-    fprintf(gltf_file, " \"asset\": {\"version\": \"2.0\"}}\n");
+    // TODO: 1 gltf.accessor (indices) for each MeshMeta
+    FOREACH_META {
+        auto  meta = index_meta[i];
+        WRITE_GLTF("  {\"bufferView\": 1, \"count\": %d, \"byteOffset\": %d, \"type\": \"SCALAR\", \"componentType\": %d}",
+                   meta.num_vertices, meta.first_byte, UNSIGNED_INT);
+        if (i < index_meta.size() - 1) { WRITE_GLTF(",\n");  }
+        else                           { WRITE_GLTF("],\n"); }
+    }
+    free(STRING_DATA);
+    WRITE_GLTF(" \"asset\": {\"version\": \"2.0\"}}\n");
     fclose(gltf_file);
     return 0;
 }
