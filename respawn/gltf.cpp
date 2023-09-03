@@ -145,7 +145,7 @@ int main(int argc, char* argv[]) {
     // index buffer
     std::vector<uint32_t>  index_buffer;
     auto  worldspawn = MODELS[0];
-    for (int i = 0; i <= static_cast<int>(worldspawn.num_meshes); i++) {
+    for (int i = 0; i < static_cast<int>(worldspawn.num_meshes); i++) {
         auto      mesh = MESHES[i];
         uint32_t  gltf_offset;
         switch (mesh.flags & 0x600) {
@@ -218,7 +218,7 @@ int main(int argc, char* argv[]) {
     FOREACH_META {
         auto  meta = index_meta[i];
         if (meta.lightmap_index != static_cast<uint32_t>(-1)) {
-            WRITE_GLTF("  {\"name\": \"%s.%d\"}", meta.material_name.c_str(), meta.lightmap_index);
+            WRITE_GLTF("  {\"name\": \"%s(%d)\"}", meta.material_name.c_str(), meta.lightmap_index);
         } else {
             WRITE_GLTF("  {\"name\": \"%s\"}", meta.material_name.c_str());  // unlit
         }
