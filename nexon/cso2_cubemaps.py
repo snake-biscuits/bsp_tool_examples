@@ -51,7 +51,7 @@ class CO2:
             elif num_blocks == 5:
                 out.header = read_struct(vtf_file, "11I")
             else:
-                raise NotImplementedError()
+                raise NotImplementedError(f"unexpected num_blocks: {num_blocks}")
             data = vtf_file.read()
             blocks = [b"LZMA" + b for b in data.split(b"LZMA")[1:]]
             assert len(blocks) == num_blocks
