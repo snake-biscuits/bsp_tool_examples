@@ -35,7 +35,7 @@ class CO2:
     vtf_bytes: bytes  # decompressed internal .vtf
 
     def __repr__(self) -> str:
-        return f"<CO2 '{self.filename}' @ 0x{id(self):0X16}>"
+        return f"<CO2 '{self.filename}' @ 0x{id(self):016X}>"
 
     @classmethod
     def from_file(cls, path: str) -> CO2:
@@ -45,13 +45,8 @@ class CO2:
             magic = vtf_file.read(3)
             assert magic == b"CO2"
             num_blocks = read_struct(vtf_file, "B")
-            # 1 + 2x num_blocks uint32_t?
-            if num_blocks == 3:
-                out.header = read_struct(vtf_file, "7I")
-            elif num_blocks == 5:
-                out.header = read_struct(vtf_file, "11I")
-            else:
-                raise NotImplementedError(f"unexpected num_blocks: {num_blocks}")
+            # NOTE: observed num_blocks of 2, 3 & 5 in official maps
+            out.header = read_struct(vtf_file, f"{num_blocks * 2 + 1}I")
             data = vtf_file.read()
             blocks = [b"LZMA" + b for b in data.split(b"LZMA")[1:]]
             assert len(blocks) == num_blocks
